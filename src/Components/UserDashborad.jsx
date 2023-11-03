@@ -1,27 +1,19 @@
 import React from "react";
-import UserWelcomeBackCard from "./UserWelcomeBackCard";
 import UserDescriptionCard from "./UserDescriptionCard";
 import UserShowcaseSection from "./UserShowcaseSection";
 import UserGithubChartSection from "./UserGithubChartSection";
 import UserProjectSection from "./UserProjectSection";
+import UserLinkSection from "./UserLinkSection";
+
 
 function UserDashborad() {
   return (
     <>
-      <div className="main">
-        {/* Left side */}
-        <div className="left-side">
-          <UserWelcomeBackCard />
-        </div>
-
-        {/* Right side */}
-        <div className="right-side">
-          <UserDescriptionCard />
-          <UserShowcaseSection />
-          <UserGithubChartSection />
-          <UserProjectSection/>
-        </div>
-      </div>
+      <UserDescriptionCard />
+      <UserShowcaseSection />
+      <UserGithubChartSection />
+      <UserProjectSection />
+      <UserLinkSection />
     </>
   );
 }

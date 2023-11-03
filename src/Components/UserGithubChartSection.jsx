@@ -4,7 +4,7 @@ import image from "../assets/icons/notfound.png";
 function UserGithubChartSection() {
   return (
     <>
-      <div>
+      <div className="mb-4">
         <h6 className="mb-3">Github contributions : </h6>
         <div className="github-contributions-container flex-center">
           <div className="flex flex-column flex-center">
