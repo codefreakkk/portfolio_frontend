@@ -1471,8 +1471,8 @@ body[data-layout="horizontal"][data-layout-size="boxed"] .navbar-header {
   width: 2rem;
 }
 .avatar-sm {
-  height: 3rem;
-  width: 3rem;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 .avatar-md {
   height: 4.5rem;
