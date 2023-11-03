@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import UserMyProjectCard from "./UserMyProjectCard"
 
 function UserMyProjectSection() {
   return (
-    <div>UserMyProjectSection</div>
-  )
+    <div>
+      <h5 className="mb-3">My Projects</h5>
+      <UserMyProjectCard/>
+    </div>
+  );
 }
 
-export default UserMyProjectSection
+export default UserMyProjectSection;

@@ -54,3 +54,8 @@
     display: flex;
     padding-left: 25px;
 }
+
+.my-project-card-container {
+    width: 30%;
+    /* border-radius: 8px; */
+}
