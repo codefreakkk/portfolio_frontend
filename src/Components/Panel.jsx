@@ -28,7 +28,7 @@ function Panel() {
                 </NavLink>
 
                 {/* section 2 */}
-                <NavLink to="/themes">
+                <NavLink to="/dashboard/themes">
                   <li class="nav-item dropdown" style={{ marginRight: "20px" }}>
                     <span
                       class="nav-link dropdown-toggle arrow-none"
@@ -42,7 +42,7 @@ function Panel() {
                 </NavLink>
 
                 {/* section 3 */}
-                <NavLink to="/search">
+                <NavLink to="/dashboard/search">
                   <li
                     class="nav-item dropdown"
                     style={{ marginRight: "20px", cursor: "pointer" }}
@@ -60,7 +60,7 @@ function Panel() {
                 </NavLink>
 
                 {/* section 4 */}
-                <NavLink to="/projects">
+                <NavLink to="/dashboard/projects">
                   <li class="nav-item dropdown" style={{ marginRight: "20px" }}>
                     <a
                       class="nav-link dropdown-toggle arrow-none"
@@ -74,7 +74,7 @@ function Panel() {
                   </li>
                 </NavLink>
 
-                <NavLink to="/mynetwork">
+                <NavLink to="/dashboard/mynetwork">
                   <li class="nav-item dropdown" style={{ marginRight: "20px" }}>
                     <a
                       class="nav-link dropdown-toggle arrow-none"

@@ -5,6 +5,8 @@ import UserDashboard from "../../Components/UserDashborad";
 import UserFooter from "../../Components/UserFooter";
 import UserWelcomeBackCard from "../../Components/UserWelcomeBackCard";
 import { Route, Switch, BrowserRouter, Routes } from "react-router-dom";
+import UserThemeSection from "../../Components/UserThemeSection";
+import UserSearchSection from "../../Components/UserSearchSection";
 
 function UserHome() {
   return (
@@ -20,9 +22,10 @@ function UserHome() {
 
         {/* Right side */}
         <div className="right-side">
-          {/* <UserDashboard/> */}
           <Routes>
-            <Route path="/home" element={<UserDashboard/>} />
+            <Route path="/home" element={<UserDashboard />} />
+            <Route path="/themes" element={<UserThemeSection />} />
+            <Route path="/search" element={<UserSearchSection/>} />
           </Routes>
         </div>
       </div>
