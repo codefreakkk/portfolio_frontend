@@ -74,7 +74,7 @@ function Panel() {
                   </li>
                 </NavLink>
 
-                <NavLink to="/dashboard/mynetwork">
+                <NavLink to="/dashboard/mynetwork/peers">
                   <li class="nav-item dropdown" style={{ marginRight: "20px" }}>
                     <a
                       class="nav-link dropdown-toggle arrow-none"

@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
-function UserSearchBar() {
+function PeersComponentSearchBar() {
   return (
     <>
-      <div className="flex mb-2 peers-searchbar">
+        <div className="flex mb-2 peers-searchbar">
           <div class="mb-3 mr-10">
             <div class="input-border">
               <input
@@ -43,7 +43,7 @@ function UserSearchBar() {
           </div>
         </div>
     </>
-  );
+  )
 }
 
-export default UserSearchBar;
+export default PeersComponentSearchBar

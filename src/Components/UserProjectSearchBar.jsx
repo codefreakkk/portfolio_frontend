@@ -4,8 +4,8 @@ function UserProjectSearchBar() {
   return (
     <>
       <div className="flex mb-2 project-searchbar-container">
-        <div class="mb-3 mr-10 project-searchbar-text">
-          <div class="">
+        <div class="mb-3 mr-20 project-searchbar-text">
+          <div class="input-border">
             <input
               class="form-control"
               type="text"
@@ -16,7 +16,7 @@ function UserProjectSearchBar() {
         </div>
 
         <div class="mb-3 row mr-8 project-searchbar-text">
-          <div class="">
+          <div class="input-border">
             <input
               class="form-control"
               type="text"

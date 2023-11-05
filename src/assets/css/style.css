@@ -106,6 +106,10 @@
   margin-right: 8px;
 }
 
+.mr-20 {
+  margin-right: 20px;
+}
+
 .github-contributions-container {
   display: flex;
   width: 100%;
@@ -184,7 +188,30 @@
 
 .mynetwork-container {
   height: 100vh;
-  overflow-y: hidden;
+  overflow-y: scroll;
   /* background-color: red; */
 }
 
+.peers-searchbar {  
+  padding-top: 20px;
+}
+
+.input-border {
+  border: 1px solid rgba(128, 128, 128, 0.178);
+  border-radius: 5px;
+}
+
+.user-project-container {
+  background-color: white;
+  height: 100vh;
+  padding: 20px 20px;
+  overflow-y: scroll;
+}
+
+.font-weight-600 {
+  font-weight: 600;
+}
+
+.color-black {
+  color: rgba(0, 0, 0, 0.685);
+}

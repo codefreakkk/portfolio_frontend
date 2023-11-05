@@ -1,6 +1,9 @@
-import React from "react";
+import { React, useState } from "react";
 import UserMyNetworkMessage from "./mynetworkcomponents/UserMyNetworkMessage";
-import { NavLink, Route } from "react-router-dom";
+import { NavLink, Route, Routes } from "react-router-dom";
+import PeersComponent from "./mynetworkcomponents/PeersComponent";
+import FollowingComponent from "./mynetworkcomponents/FollowingComponent";
+import FollowerComponent from "./mynetworkcomponents/FollowerComponent";
 
 function UserMyNetworkSection() {
   return (
@@ -11,28 +14,53 @@ function UserMyNetworkSection() {
             <div class="card-body">
               <h4 class="card-title mb-4">Activities</h4>
 
-              <ul class="nav nav-tabs nav-tabs-custom">
-                <NavLink
-                  to="peers"
-                >
+              <div>
+                <ul class="nav nav-tabs nav-tabs-custom">
                   <li class="nav-item">
-                    <a class="nav-link">Peers</a>
+                    <NavLink to="/dashboard/mynetwork/peers">
+                      {({ isActive, isPending, isTransitioning }) => (
+                        <a
+                          className={isActive ? "nav-link active" : "nav-link color-black"}
+                        >
+                          Peers
+                        </a>
+                      )}
+                    </NavLink>
                   </li>
-                </NavLink>
 
-                <NavLink to="followers">
                   <li class="nav-item">
-                    <a class="nav-link">Followers</a>
+                    <NavLink to="/dashboard/mynetwork/followers">
+                      {({ isActive, isPending, isTransitioning }) => (
+                        <a
+                          className={isActive ? "nav-link active" : "nav-link color-black"}
+                        >
+                          Followers
+                        </a>
+                      )}
+                    </NavLink>
                   </li>
-                </NavLink>
 
-                <NavLink to="following">
                   <li class="nav-item">
-                    <a class="nav-link">Following</a>
+                    <NavLink to="/dashboard/mynetwork/following">
+                      {({ isActive, isPending, isTransitioning }) => (
+                        <a
+                          className={isActive ? "nav-link active" : "nav-link color-black"}
+                        >
+                          Following
+                        </a>
+                      )}
+                    </NavLink>
                   </li>
-                </NavLink>
-              </ul>
+                </ul>
+              </div>
               {/* Route body */}
+              <div>
+                <Routes>
+                  <Route path="/peers" element={<PeersComponent />} />
+                  <Route path="/followers" element={<FollowerComponent />} />
+                  <Route path="/following" element={<FollowingComponent />} />
+                </Routes>
+              </div>
             </div>
           </div>
         </div>

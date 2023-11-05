@@ -1,15 +1,19 @@
 import React from "react";
+import message from "../../assets/icons/message.png";
 
-function UserMyNetworkMessage() {
+function UserMyNetworkMessage({title}) {
   return (
     <>
       <div class="mt-4">
         <div className="mynetwork-bar-container">
+        <div className="mb-3">
+          <img src={message} height="80" alt="" />
+        </div>
           <div>
-            <span className="font-weight-500">No one here yet.</span>
+            <span className="font-weight-600">No one here yet.</span>
           </div>
           <div>
-            <span> You can follow people and make them Peers</span>
+            <span>{title}</span>
           </div>
         </div>
       </div>
