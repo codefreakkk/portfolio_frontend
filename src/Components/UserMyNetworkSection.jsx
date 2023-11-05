@@ -8,6 +8,7 @@ import FollowerComponent from "./mynetworkcomponents/FollowerComponent";
 function UserMyNetworkSection() {
   return (
     <>
+    
       <div class="row">
         <div class="col-lg-12">
           <div class="card mynetwork-container">

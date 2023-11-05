@@ -35,7 +35,7 @@ function UserHome() {
             <Route path="/mynetwork/*" element={<UserMyNetworkSection />} />
             <Route path="/addprojects" element={<AddProjectComponent />} />
             <Route path="/connectgithub" element={<AddGithubComponent />} />
-            <Route path="/addpersonaldetails" element={<AddPersonalDetails/>} />
+            <Route path="/addpersonaldetails/*" element={<AddPersonalDetails/>} />
           </Routes>
         </div>
       </div>

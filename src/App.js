@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserHome from "./pages/user/UserHome";
 import Home from "./pages/Home";
-import PageNotFound from "./Components/PageNotFound.jsx"
 
 // import CSS
 import "./assets/css/app.min.css";
@@ -16,7 +15,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/dashboard/*" element={<UserHome />}/>
-          <Route path="/dashboard" element={<PageNotFound/>}/>
           <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>
