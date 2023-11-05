@@ -7,6 +7,8 @@ import UserWelcomeBackCard from "../../Components/UserWelcomeBackCard";
 import { Route, Switch, BrowserRouter, Routes } from "react-router-dom";
 import UserThemeSection from "../../Components/UserThemeSection";
 import UserSearchSection from "../../Components/UserSearchSection";
+import UserProjectSearchSection from "../../Components/UserProjectSearchSection";
+import UserMyNetworkSection from "../../Components/UserMyNetworkSection";
 
 function UserHome() {
   return (
@@ -26,6 +28,8 @@ function UserHome() {
             <Route path="/home" element={<UserDashboard />} />
             <Route path="/themes" element={<UserThemeSection />} />
             <Route path="/search" element={<UserSearchSection/>} />
+            <Route path="/projects" element={<UserProjectSearchSection/>} />
+            <Route path="/mynetwork/*" element={<UserMyNetworkSection/>} />
           </Routes>
         </div>
       </div>

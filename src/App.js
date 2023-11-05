@@ -16,6 +16,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/dashboard/*" element={<UserHome />}/>
+          {/* <Route path="/dashboard/mynetwork/*" element={<UserHome />}/> */}
           <Route path="/dashboard" element={<PageNotFound/>}/>
           <Route path="/" element={<Home />} />
         </Routes>

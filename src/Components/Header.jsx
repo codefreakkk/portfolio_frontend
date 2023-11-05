@@ -8,13 +8,12 @@ function Header() {
         <div class="navbar-header">
           <div class="d-flex">
             <div class="navbar-brand-box">
-              <a class="logo logo-dark">
+              <a class="logo logo-light">
                 <span class="logo-sm">PeerList</span>
                 <span
-                  class="logo-lg font_size_20px"
-                  style={{ fontWeight: "bold", color: "black" }}
+                  class="logo-lg font_size_20px color-white"
                 >
-                  PeerList
+                  E-Portfolio
                 </span>
               </a>
             </div>
@@ -41,7 +40,7 @@ function Header() {
           </div>
 
           <div class="d-flex">
-            <div class="dropdown d-inline-block">
+            {/* <div class="dropdown d-inline-block">
               <button
                 type="button"
                 class="btn header-item noti-icon waves-effect"
@@ -103,7 +102,7 @@ function Header() {
                   </a>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div class="dropdown d-inline-block">
               <button

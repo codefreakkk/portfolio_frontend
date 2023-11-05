@@ -1,24 +1,24 @@
-import React from 'react'
-import user from "../assets/icons/user.png"
+import React from "react";
 
-function UserSearchCard({name, description}) {
+function UserSearchCard({ user, name, description }) {
   return (
     <>
-        <div class="col-xl-4 col-sm-6">
+      <div class="col-xl-4 col-sm-6">
         <div class="card shadow-none border">
           <div class="card-body p-3">
             <div class="">
               <div class="float-end ms-2">
                 <div class="dropdown mb-2">
-                  <div class="font-size-16 text-muted share-container">
-                    <i class="bx bx-share-alt"></i>
+                  <div class="font-size-12 text-muted follow-button">
+                    {/* follow button */}
+                    <div className="follow">Follow</div>
                   </div>
                 </div>
               </div>
               <div class="avatar-xs me-3 mb-3">
                 <div class="avatar-title bg-transparent rounded">
                   {/* user image */}
-                  <img src={user} alt="" height="30 " />
+                  <img src={user} alt="" height="35" className="user-image" />
                 </div>
               </div>
               <div class="d-flex">
@@ -28,9 +28,7 @@ function UserSearchCard({name, description}) {
                       {name}
                     </a>
                   </h5>
-                  <p class="text-muted text-truncate mb-0">
-                    {description}
-                  </p>
+                  <p class="text-muted text-truncate mb-0">{description}</p>
                 </div>
               </div>
             </div>
@@ -38,7 +36,7 @@ function UserSearchCard({name, description}) {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default UserSearchCard
+export default UserSearchCard;

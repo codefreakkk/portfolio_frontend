@@ -2,7 +2,7 @@
   font-size: 20px;
 }
 
-.color_white {
+.color-white {
   color: white;
 }
 
@@ -155,3 +155,36 @@
 .form-control {
   border: none;
 }
+
+.follow-button {
+  background-color: black;
+  padding: 3px 12px;
+  border-radius: 4px;
+}
+
+.follow {
+  color: rgba(255, 255, 255, 0.836);
+  font-weight: 500;
+}
+
+.user-image {
+  border-radius: 50%;
+}
+
+.project-searchbar-text {
+  width: 100%;
+}
+
+.mynetwork-bar-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mynetwork-container {
+  height: 100vh;
+  overflow-y: hidden;
+  /* background-color: red; */
+}
+

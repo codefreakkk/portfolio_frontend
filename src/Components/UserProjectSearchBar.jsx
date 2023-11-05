@@ -1,37 +1,26 @@
 import React from "react";
 
-function UserSearchBar() {
+function UserProjectSearchBar() {
   return (
     <>
-      <div className="flex mb-2">
-        <div class="mb-3 mr-10">
+      <div className="flex mb-2 project-searchbar-container">
+        <div class="mb-3 mr-10 project-searchbar-text">
           <div class="">
             <input
               class="form-control"
               type="text"
-              placeholder="Username"
+              placeholder="Project Title"
               id="example-text-input"
             />
           </div>
         </div>
 
-        <div class="mb-3 mr-10">
-          <div class="">
-            <input
-              class="form-control"
-              placeholder="Company name"
-              type="text"
-              id="example-text-input"
-            />
-          </div>
-        </div>
-
-        <div class="mb-3 row mr-8">
+        <div class="mb-3 row mr-8 project-searchbar-text">
           <div class="">
             <input
               class="form-control"
               type="text"
-              placeholder="Experience"
+              placeholder="Domain of Project"
               id="example-text-input"
             />
           </div>
@@ -46,4 +35,4 @@ function UserSearchBar() {
   );
 }
 
-export default UserSearchBar;
+export default UserProjectSearchBar;
