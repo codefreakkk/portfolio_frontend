@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-function UserShowcaseCard({image, title, description}) {
+function UserShowcaseCard({ image, title, description, url }) {
+  const navigate = useNavigate();
+
   return (
     <>
       <div class="card mini-stats-wid my-project-card-container">
@@ -17,7 +20,12 @@ function UserShowcaseCard({image, title, description}) {
             </div>
 
             <div class="avatar-sm ms-auto">
-              <div class="avatar-title bg-light rounded-circle text-primary font-size-20">
+              <div
+                class="avatar-title bg-light rounded-circle text-primary font-size-20"
+                onClick={() => {
+                  navigate(url)
+                }}
+              >
                 <i class="bx bx-plus-circle"></i>
               </div>
             </div>

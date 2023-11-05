@@ -9,6 +9,9 @@ import UserThemeSection from "../../Components/UserThemeSection";
 import UserSearchSection from "../../Components/UserSearchSection";
 import UserProjectSearchSection from "../../Components/UserProjectSearchSection";
 import UserMyNetworkSection from "../../Components/UserMyNetworkSection";
+import AddProjectComponent from "../../Components/addstuffs/AddProjectComponent";
+import AddGithubComponent from "../../Components/addstuffs/AddGithubComponent";
+import AddPersonalDetails from "../../Components/addstuffs/AddPersonalDetails";
 
 function UserHome() {
   return (
@@ -27,9 +30,12 @@ function UserHome() {
           <Routes>
             <Route path="/home" element={<UserDashboard />} />
             <Route path="/themes" element={<UserThemeSection />} />
-            <Route path="/search" element={<UserSearchSection/>} />
-            <Route path="/projects" element={<UserProjectSearchSection/>} />
-            <Route path="/mynetwork/*" element={<UserMyNetworkSection/>} />
+            <Route path="/search" element={<UserSearchSection />} />
+            <Route path="/projects" element={<UserProjectSearchSection />} />
+            <Route path="/mynetwork/*" element={<UserMyNetworkSection />} />
+            <Route path="/addprojects" element={<AddProjectComponent />} />
+            <Route path="/connectgithub" element={<AddGithubComponent />} />
+            <Route path="/addpersonaldetails" element={<AddPersonalDetails/>} />
           </Routes>
         </div>
       </div>
