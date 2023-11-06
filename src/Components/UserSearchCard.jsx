@@ -10,14 +10,10 @@ function UserSearchCard({ user, name, description }) {
             <div class="">
               <div class="float-end ms-2">
                 <div class="dropdown mb-2">
-                  <NavLink to="/dashboard/user/12">
-
                   <div class="font-size-12 text-muted follow-button">
                     {/* follow button */}
                     <div className="follow">Follow</div>
                   </div>
-                  </NavLink>
-
                 </div>
               </div>
               <div class="avatar-xs me-3 mb-3">
@@ -29,9 +25,11 @@ function UserSearchCard({ user, name, description }) {
               <div class="d-flex">
                 <div class="overflow-hidden me-auto">
                   <h5 class="font-size-14 text-truncate mb-1">
-                    <a href="javascript: void(0);" class="text-body">
-                      {name}
-                    </a>
+                    <NavLink to="/dashboard/user/12">
+                      <a class="text-body">
+                        {name}
+                      </a>
+                    </NavLink>
                   </h5>
                   <p class="text-muted text-truncate mb-0">{description}</p>
                 </div>

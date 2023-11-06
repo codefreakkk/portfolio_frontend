@@ -8,11 +8,6 @@ function UserProjectSection() {
         <h6 className="mb-3">My Projects : </h6>
         <div className="row">
           <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
         </div>
       </div>
     </>

@@ -10,26 +10,6 @@ function UserProjectSearchSection() {
         <UserProjectSearchBar />
         <div className="row">
           <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
-          <UserProjectCard />
         </div>
       </div>
     </>

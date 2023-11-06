@@ -8,9 +8,9 @@ function UserProjectPage() {
     <>
       <div class="row" style={{ width: "70%" }}>
         <div class="col-lg-12">
-          <div class="card">
+          <div class="card pl-5">
             <div class="card-body">
-              <StuffHeader title={"View Project"} url={"/dashboard/home"} />
+              <StuffHeader title={"View Project"} url={""} />
               {/* body */}
               <div className="mt-4">
                 <div className="view-project-header">
@@ -33,7 +33,7 @@ function UserProjectPage() {
                     src={image}
                     alt=""
                     style={{ height: "50vh" }}
-                    class="img-thumbnail mx-auto d-block"
+                    class="img-thumbnail d-block"
                   />
                 </div>
 

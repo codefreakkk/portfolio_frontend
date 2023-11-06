@@ -47,6 +47,35 @@ function ProfileForm() {
             </div>
           </div>
 
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="formrow-email-input" class="form-label">
+                  Company name
+                </label>
+                <input
+                  type="text"
+                  class="form-control input-border"
+                  id="formrow-email-input"
+                  placeholder="Enter Company name"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="formrow-password-input" class="form-label">
+                  Work Experience
+                </label>
+                <input
+                  type="text"
+                  class="form-control input-border"
+                  id="formrow-password-input"
+                  placeholder="Enter Work Experience"
+                />
+              </div>
+            </div>
+          </div>
+
           <div class="mb-3">
             <label class="form-label">Description</label>
             <div>

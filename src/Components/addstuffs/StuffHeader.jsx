@@ -10,7 +10,12 @@ function StuffHeader({ title, url }) {
         <div
           className="mr-10 pointer"
           onClick={() => {
-            navigate(url);
+            if (url != "") {
+              navigate(url);
+            }
+            else {
+              navigate(-1);
+            }
           }}
         >
           <img src={back} height="20" alt="" />
