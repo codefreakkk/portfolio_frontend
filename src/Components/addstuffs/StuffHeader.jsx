@@ -1,7 +1,7 @@
 import React from "react";
 import back from "../../assets/icons/back.png";
 import { useNavigate } from "react-router-dom";
-function StuffHeader({ title }) {
+function StuffHeader({ title, url }) {
   const navigate = useNavigate();
 
   return (
@@ -10,7 +10,7 @@ function StuffHeader({ title }) {
         <div
           className="mr-10 pointer"
           onClick={() => {
-            navigate("/dashboard/home");
+            navigate(url);
           }}
         >
           <img src={back} height="20" alt="" />

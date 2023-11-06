@@ -11,7 +11,7 @@ function UserShowcaseSection() {
       <h6 className="mb-3">Showcase your work from : </h6>
       <div className="my-project-container">
         <UserShowcaseCard image={img1} title={"Add Projects"} description={"Add your projects on portfolio"} url={"/dashboard/addprojects"} />
-        <UserShowcaseCard image={img2}  title={"Github"} description={"Connect github with portfolio"} url={"/dashboard/connectgithub"} />
+        <UserShowcaseCard image={img2}  title={"Github"} description={"Connect github with portfolio"} url={""} />
         <UserShowcaseCard image={img3}  title={"Personal Details"} description={"Add your personal details"} url={"/dashboard/addpersonaldetails/profile"} />
       </div>
     </div>

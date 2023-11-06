@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function UserProjectCard() {
   return (
@@ -21,11 +22,17 @@ function UserProjectCard() {
               </div>
               <div class="d-flex">
                 <div class="overflow-hidden me-auto">
-                  <h5 class="font-size-14 text-truncate mb-1">
-                    <a href="javascript: void(0);" class="text-body">
-                      Devsinfo - Make your portfolio
-                    </a>
-                  </h5>
+                  
+                  <NavLink to={`/dashboard/projects/12`}>
+                    <div className="pointer">
+                      <h5 class="font-size-14 text-truncate mb-1">
+                        <a href="javascript: void(0);" class="text-body">
+                          Devsinfo - Make your portfolio
+                        </a>
+                      </h5>
+                    </div>
+                  </NavLink>
+
                   <p class="text-muted text-truncate mb-0">
                     This project description
                   </p>

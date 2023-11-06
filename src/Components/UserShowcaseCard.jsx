@@ -21,9 +21,11 @@ function UserShowcaseCard({ image, title, description, url }) {
 
             <div class="avatar-sm ms-auto">
               <div
-                class="avatar-title bg-light rounded-circle text-primary font-size-20"
+                class="avatar-title bg-light rounded-circle text-primary font-size-20 pointer"
                 onClick={() => {
-                  navigate(url)
+                  if (url != "") {
+                    navigate(url);
+                  }
                 }}
               >
                 <i class="bx bx-plus-circle"></i>

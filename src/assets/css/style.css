@@ -245,3 +245,16 @@
   color: #556EE6;
 }
 
+.bar {
+  height: 1px;
+  background-color: rgba(128, 128, 128, 0.301);
+}
+
+.view-project-header {
+  display: flex;
+  justify-content:space-between
+}
+
+font-size-12 {
+  font-size: 12px;
+}
