@@ -2,7 +2,7 @@ import React from "react";
 
 function UserLinkCard({ image, title, description }) {
   return (
-    <div class="card mini-stats-wid my-project-card-container">
+    <div class="card mini-stats-wid my-project-card-container input-border">
       <div class="card-body">
         <div class="d-flex flex-wrap">
           <div class="flex">

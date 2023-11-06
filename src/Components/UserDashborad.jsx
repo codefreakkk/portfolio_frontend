@@ -5,16 +5,17 @@ import UserGithubChartSection from "./UserGithubChartSection";
 import UserProjectSection from "./UserProjectSection";
 import UserLinkSection from "./UserLinkSection";
 
-
 function UserDashborad() {
   return (
     <>
-    {/* <h5 className="mb-2">Dashboard</h5> */}
-      <UserDescriptionCard />
-      <UserShowcaseSection />
-      <UserGithubChartSection />
-      <UserProjectSection />
-      <UserLinkSection />
+      {/* <h5 className="mb-2">Dashboard</h5> */}
+      <div className="user-dashboard-container">
+        <UserDescriptionCard />
+        <UserShowcaseSection />
+        <UserGithubChartSection />
+        <UserProjectSection />
+        <UserLinkSection />
+      </div>
     </>
   );
 }

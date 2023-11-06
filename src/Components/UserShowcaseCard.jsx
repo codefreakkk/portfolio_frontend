@@ -6,7 +6,7 @@ function UserShowcaseCard({ image, title, description, url }) {
 
   return (
     <>
-      <div class="card mini-stats-wid my-project-card-container">
+      <div class="card mini-stats-wid my-project-card-container input-border">
         <div class="card-body">
           <div class="d-flex flex-wrap">
             <div class="flex">

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function UserSearchCard({ user, name, description }) {
   return (
@@ -9,10 +10,14 @@ function UserSearchCard({ user, name, description }) {
             <div class="">
               <div class="float-end ms-2">
                 <div class="dropdown mb-2">
+                  <NavLink to="/dashboard/user/12">
+
                   <div class="font-size-12 text-muted follow-button">
                     {/* follow button */}
                     <div className="follow">Follow</div>
                   </div>
+                  </NavLink>
+
                 </div>
               </div>
               <div class="avatar-xs me-3 mb-3">

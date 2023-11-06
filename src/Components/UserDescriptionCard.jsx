@@ -4,7 +4,7 @@ import profile from "../assets/images/profile.jpeg";
 
 function UserDescriptionCard() {
   return (
-    <div class="card">
+    <div class="mb-4 input-border">
       <div>
         <div class="row">
           <div class="col-lg-9 col-sm-8">

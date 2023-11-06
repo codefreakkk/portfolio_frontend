@@ -47,13 +47,13 @@ function AccountForm() {
             </div>
           </div>
 
-          <div className="mt-4 mb-2">
+          {/* <div className="mt-4 mb-2">
             <h5 className="primary-color">Change Username</h5>
-          </div>
+          </div> */}
 
           <div class="mb-3">
             <label for="formrow-firstname-input" class="form-label">
-              Username
+              Change username
             </label>
             <input
               type="text"
