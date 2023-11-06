@@ -6,7 +6,7 @@ import AccountForm from "./AccountForm";
 function AddPersonalDetails() {
   return (
     <>
-      <div class="row" style={{width: "80%"}}>
+      <div class="row" style={{ width: "80%" }}>
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">

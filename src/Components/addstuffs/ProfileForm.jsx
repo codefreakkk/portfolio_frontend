@@ -129,95 +129,105 @@ function ProfileForm() {
             {/* <div className="mt-4 mb-2">
               <h5 className="primary-color">Links</h5>
             </div> */}
+
             {/* <div class="row"> */}
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="formrow-email-input" class="form-label">
-                    Leetcode
-                  </label>
-                  <input
-                    type="text"
-                    class="form-control input-border"
-                    id="formrow-email-input"
-                    placeholder="Enter Your Full Name"
-                  />
-                </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="formrow-email-input" class="form-label">
+                  Leetcode
+                </label>
+                <input
+                  type="text"
+                  class="form-control input-border"
+                  id="formrow-email-input"
+                  placeholder="Enter Your Full Name"
+                />
               </div>
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="formrow-password-input" class="form-label">
-                    Codeforces
-                  </label>
-                  <input
-                    type="text"
-                    class="form-control input-border"
-                    id="formrow-password-input"
-                    placeholder="Enter Your Email"
-                  />
-                </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="formrow-password-input" class="form-label">
+                  Codeforces
+                </label>
+                <input
+                  type="text"
+                  class="form-control input-border"
+                  id="formrow-password-input"
+                  placeholder="Enter Your Email"
+                />
               </div>
+            </div>
             {/* </div> */}
 
             {/* <div class="row"> */}
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="formrow-email-input" class="form-label">
-                    Geeks For Geeks
-                  </label>
-                  <input
-                    type="text"
-                    class="form-control input-border"
-                    id="formrow-email-input"
-                    placeholder="Enter Your Full Name"
-                  />
-                </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="formrow-email-input" class="form-label">
+                  Geeks For Geeks
+                </label>
+                <input
+                  type="text"
+                  class="form-control input-border"
+                  id="formrow-email-input"
+                  placeholder="Enter Your Full Name"
+                />
               </div>
+            </div>
 
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="formrow-password-input" class="form-label">
-                    LinkedIn
-                  </label>
-                  <input
-                    type="text"
-                    class="form-control input-border"
-                    id="formrow-password-input"
-                    placeholder="Enter Your Email"
-                  />
-                </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="formrow-password-input" class="form-label">
+                  LinkedIn
+                </label>
+                <input
+                  type="text"
+                  class="form-control input-border"
+                  id="formrow-password-input"
+                  placeholder="Enter Your Email"
+                />
               </div>
+            </div>
             {/* </div> */}
 
             {/* resume */}
 
             {/* <div class="row"> */}
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="formrow-email-input" class="form-label">
-                    Update Profile Picture
-                  </label>
-                  <input
-                    type="file"
-                    class="form-control input-border"
-                    id="resume"
-                  />
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="formrow-password-input" class="form-label">
-                    Upload Resume
-                  </label>
-                  <input
-                    type="file"
-                    class="form-control input-border"
-                    id="resume"
-                  />
-                </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="formrow-email-input" class="form-label">
+                  Update Profile Picture
+                </label>
+                <input
+                  type="file"
+                  class="form-control input-border"
+                  id="resume"
+                />
               </div>
             </div>
+
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="formrow-password-input" class="form-label">
+                  Upload Resume
+                </label>
+                <input
+                  type="file"
+                  class="form-control input-border"
+                  id="resume"
+                />
+              </div>
+            </div>
+          </div>
+
           {/* </div> */}
+          <div className="">
+            <input
+              data-repeater-create
+              type="button"
+              class="btn btn-success mt-3 mt-lg-0"
+              value="Save"
+            />
+          </div>
         </form>
       </div>
     </>
