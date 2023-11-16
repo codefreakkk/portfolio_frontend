@@ -1,7 +1,7 @@
 import React from "react";
-import StuffHeader from "../../Components/addstuffs/StuffHeader";
+import StuffHeader from "../../Components/userAddstuffs/StuffHeader";
 import image from "../../assets/images/small/img-2.jpg";
-import ViewProjectCommentsCard from "../../Components/ViewProjectCommentsCard";
+import ViewProjectCommentsCard from "../../Components/userProjects/ViewProjectCommentsCard";
 
 function UserProjectPage() {
   return (

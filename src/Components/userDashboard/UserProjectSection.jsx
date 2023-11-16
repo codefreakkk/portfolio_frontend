@@ -1,5 +1,5 @@
 import React from "react";
-import UserProjectCard from "./UserProjectCard";
+import UserProjectCard from "../userProjects/UserProjectCard";
 
 function UserProjectSection() {
   return (
@@ -8,6 +8,12 @@ function UserProjectSection() {
         <h6 className="mb-3">My Projects : </h6>
         <div className="row">
           <UserProjectCard />
+          <UserProjectCard />
+          <UserProjectCard />
+          <UserProjectCard />
+          <UserProjectCard />
+          <UserProjectCard />
+          
         </div>
       </div>
     </>

@@ -1,6 +1,6 @@
 import React from "react";
 import SkillSetComponent from "./UserSkillSetComponent";
-import profile from "../assets/images/profile.jpeg";
+import profile from "../../assets/images/profile.jpeg";
 
 function UserDescriptionCard() {
   return (

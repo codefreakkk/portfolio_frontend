@@ -1,18 +1,18 @@
 import React from "react";
-import Header from "../../Components/Header";
-import Panel from "../../Components/Panel";
-import UserDashboard from "../../Components/UserDashborad";
-import UserFooter from "../../Components/UserFooter";
-import UserWelcomeBackCard from "../../Components/UserWelcomeBackCard";
+import Header from "../../Components/miscComponents/Header";
+import Panel from "../../Components/miscComponents/Panel";
+import UserDashboard from "../../Components/userDashboard/UserDashborad";
+import UserFooter from "../../Components/miscComponents/UserFooter";
+import UserWelcomeBackCard from "../../Components/miscComponents/UserWelcomeBackCard";
 import { Route, Switch, BrowserRouter, Routes } from "react-router-dom";
-import UserThemeSection from "../../Components/UserThemeSection";
-import UserSearchSection from "../../Components/UserSearchSection";
-import UserProjectSearchSection from "../../Components/UserProjectSearchSection";
-import UserMyNetworkSection from "../../Components/UserMyNetworkSection";
-import AddProjectComponent from "../../Components/addstuffs/AddProjectComponent";
-import AddPersonalDetails from "../../Components/addstuffs/AddPersonalDetails";
+import UserThemeSection from "../../Components/userThemes/UserThemeSection";
+import UserSearchSection from "../../Components/userSearch/UserSearchSection";
+import UserProjectSearchSection from "../../Components/userProjects/UserProjectSearchSection";
+import UserMyNetworkSection from "../../Components/userMyNetwork/UserMyNetworkSection";
+import AddProjectComponent from "../../Components/userAddstuffs/AddProjectComponent";
+import AddPersonalDetails from "../../Components/userAddstuffs/AddPersonalDetails";
 import UserProjectPage from "./UserProjectPage";
-import UserPage from "./UserPage";
+import UserProfilePage from "./UserProfilePage";
 
 function UserHomePage() {
   return (
@@ -36,7 +36,7 @@ function UserHomePage() {
             <Route path="/mynetwork/*" element={<UserMyNetworkSection />} />
             <Route path="/addprojects" element={<AddProjectComponent />} />
             <Route path="/projects/:id" element={<UserProjectPage/>}/>
-            <Route path="/user/:id" element={<UserPage/>} />
+            <Route path="/user/:id" element={<UserProfilePage/>} />
             <Route
               path="/addpersonaldetails/*"
               element={<AddPersonalDetails />}

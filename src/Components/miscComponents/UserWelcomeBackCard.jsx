@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "../assets/images/profile-img.png"
-import user from "../assets/images/users/avatar-1.jpg"
+import logo from "../../assets/images/profile-img.png"
+import user from "../../assets/images/users/avatar-1.jpg"
 
 function UserWelcomeBackCard() {
   return (

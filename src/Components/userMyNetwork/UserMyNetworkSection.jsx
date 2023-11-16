@@ -1,9 +1,9 @@
 import { React, useState } from "react";
-import UserMyNetworkMessage from "./mynetworkcomponents/UserMyNetworkMessage";
+import UserMyNetworkMessage from "./UserMyNetworkMessage";
 import { NavLink, Route, Routes } from "react-router-dom";
-import PeersComponent from "./mynetworkcomponents/PeersComponent";
-import FollowingComponent from "./mynetworkcomponents/FollowingComponent";
-import FollowerComponent from "./mynetworkcomponents/FollowerComponent";
+import PeersComponent from "./PeersComponent";
+import FollowingComponent from "./FollowingComponent";
+import FollowerComponent from "./FollowerComponent";
 
 function UserMyNetworkSection() {
   return (

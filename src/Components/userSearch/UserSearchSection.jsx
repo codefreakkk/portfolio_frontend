@@ -1,7 +1,7 @@
 import React from "react";
 import UserSearchCard from "./UserSearchCard";
 import UserSearchBar from "./UserSearchBar";
-import user from "../assets/images/users/avatar-1.jpg";
+import user from "../../assets/images/users/avatar-1.jpg";
 
 function UserSearchSection() {
   return (

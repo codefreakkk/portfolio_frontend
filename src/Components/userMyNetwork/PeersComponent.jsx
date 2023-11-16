@@ -1,6 +1,5 @@
 import React from "react";
-import UserMyNetworkMessage from "./UserMyNetworkMessage";
-import UserSearchCard from "../UserSearchCard";
+import UserSearchCard from "../userSearch/UserSearchCard";
 import user from "../../assets/images/users/avatar-1.jpg";
 import PeersComponentSearchBar from "./PeersComponentSearchBar";
 

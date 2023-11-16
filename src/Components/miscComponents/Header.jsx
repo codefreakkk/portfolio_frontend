@@ -1,5 +1,5 @@
 import React from "react";
-import avtar from "../assets/images/users/avatar-1.jpg";
+import avtar from "../../assets/images/users/avatar-1.jpg";
 
 function Header() {
   return (

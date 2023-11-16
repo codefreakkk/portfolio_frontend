@@ -1,5 +1,5 @@
 import React from "react";
-import image from "../assets/icons/notfound.png";
+import image from "../../assets/icons/notfound.png";
 
 function UserGithubChartSection() {
   return (

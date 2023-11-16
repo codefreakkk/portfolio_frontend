@@ -1,8 +1,8 @@
 import React from "react";
 import UserShowcaseCard from "./UserShowcaseCard"
-import img1 from "../assets/icons/code.png"
-import img2 from "../assets/icons/github.png"
-import img3 from "../assets/icons/form.png"
+import img1 from "../../assets/icons/code.png"
+import img2 from "../../assets/icons/github.png"
+import img3 from "../../assets/icons/form.png"
 
 function UserShowcaseSection() {
 

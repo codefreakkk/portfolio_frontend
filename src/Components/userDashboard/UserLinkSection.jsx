@@ -1,9 +1,9 @@
 import React from "react";
 import UserLinkCard from "./UserLinkCard";
-import leetcode from "../assets/icons/leetcode.png"
-import codeforces from "../assets/icons/codeforces.png"
-import gfg from "../assets/icons/gfg.png"
-import linkedin from "../assets/icons/linkedin.png"
+import leetcode from "../../assets/icons/leetcode.png"
+import codeforces from "../../assets/icons/codeforces.png"
+import gfg from "../../assets/icons/gfg.png"
+import linkedin from "../../assets/icons/linkedin.png"
 
 function UserLinkSection() {
   return (
