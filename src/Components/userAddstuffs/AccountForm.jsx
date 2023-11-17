@@ -14,7 +14,7 @@ function AccountForm() {
               type="text"
               class="form-control input-border"
               id="formrow-firstname-input"
-              placeholder="Enter Your User Name"
+              placeholder="Username"
             />
           </div>
 
@@ -53,13 +53,13 @@ function AccountForm() {
 
           <div class="mb-3">
             <label for="formrow-firstname-input" class="form-label">
-              Change username
+              Password
             </label>
             <input
               type="text"
               class="form-control input-border"
               id="formrow-firstname-input"
-              placeholder="Username"
+              placeholder="password"
             />
           </div>
 

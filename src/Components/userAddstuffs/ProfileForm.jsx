@@ -6,18 +6,6 @@ function ProfileForm() {
       <div class="col-xl-12">
         <div className="mb-3"></div>
         <form>
-          <div class="mb-3">
-            <label for="formrow-firstname-input" class="form-label">
-              Username
-            </label>
-            <input
-              type="text"
-              class="form-control input-border"
-              id="formrow-firstname-input"
-              placeholder="Enter Your User Name"
-            />
-          </div>
-
           <div class="row">
             <div class="col-md-6">
               <div class="mb-3">

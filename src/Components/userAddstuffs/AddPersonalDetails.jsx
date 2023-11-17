@@ -11,7 +11,10 @@ function AddPersonalDetails() {
           <div class="card">
             <div class="card-body">
               {/* <h4 class="card-title mb-4">Activities</h4> */}
-              <StuffHeader title={"Add Personal Details"} url={"/dashboard/home"}/>
+              <StuffHeader
+                title={"Add Personal Details"}
+                url={"/dashboard/home"}
+              />
               <div className="mb-3">
                 <ul class="nav nav-tabs nav-tabs-custom">
                   <li class="nav-item">
