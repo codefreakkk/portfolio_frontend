@@ -81,32 +81,6 @@ function AddProjectComponent() {
                     </div>
                   </div>
 
-                  {/* skill set start */}
-                  <div className="mb-3">
-                    <label for="formrow-email-input" class="form-label">
-                      Skill Set
-                    </label>
-                    <div class="flex">
-                      <div class="mr-10" style={{ width: "100%" }}>
-                        <input
-                          type="text"
-                          class="form-control input-border"
-                          id="formrow-email-input"
-                          placeholder="Enter Your Full Name"
-                        />
-                      </div>
-                      <div>
-                        <button
-                          type="submit"
-                          class="btn btn-primary waves-effect waves-light"
-                        >
-                          Submit
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  {/* Skill set end */}
-
                   <div class="mb-3">
                     <label class="form-label">Description</label>
                     <div>
