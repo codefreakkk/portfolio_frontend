@@ -13,7 +13,6 @@ import AddProjectComponent from "../../Components/userAddstuffs/AddProjectCompon
 import AddPersonalDetails from "../../Components/userAddstuffs/AddPersonalDetails";
 import UserProjectPage from "./UserProjectPage";
 import UserProfilePage from "./UserProfilePage";
-
 function UserHomePage() {
   return (
     <>
@@ -35,8 +34,8 @@ function UserHomePage() {
             <Route path="/projects" element={<UserProjectSearchSection />} />
             <Route path="/mynetwork/*" element={<UserMyNetworkSection />} />
             <Route path="/addprojects" element={<AddProjectComponent />} />
-            <Route path="/projects/:id" element={<UserProjectPage/>}/>
-            <Route path="/user/:id" element={<UserProfilePage/>} />
+            <Route path="/projects/:id" element={<UserProjectPage />} />
+            <Route path="/user/:id" element={<UserProfilePage />} />
             <Route
               path="/addpersonaldetails/*"
               element={<AddPersonalDetails />}

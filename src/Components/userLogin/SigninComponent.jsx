@@ -1,9 +1,20 @@
-import React from "react";
+import { React, useState } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../../assets/homePageAssets/hexagon.png"
-import background from "../../assets/images/profile-img.png"
+import logo from "../../assets/homePageAssets/hexagon.png";
+import background from "../../assets/images/profile-img.png";
+import useAuth from "../../hooks/useAuth";
 
 function SigninComponent() {
+  const { setAuth } = useAuth();
+  const [userCred, setUserCred] = useState({
+    u_name: "",
+    u_password: "",
+  });
+
+  function submitForm() {
+    console.log(userCred);
+  }
+
   return (
     <div class="account-pages my-5 pt-sm-5">
       <div class="container">
@@ -19,11 +30,7 @@ function SigninComponent() {
                     </div>
                   </div>
                   <div class="col-5 align-self-end">
-                    <img
-                      src={background}
-                      alt=""
-                      class="img-fluid"
-                    />
+                    <img src={background} alt="" class="img-fluid" />
                   </div>
                 </div>
               </div>
@@ -43,9 +50,7 @@ function SigninComponent() {
                   </a>
                 </div>
                 <div class="p-2">
-                  <form
-                    class="form-horizontal"
-                  >
+                  <form class="form-horizontal">
                     <div class="mb-3">
                       <label for="username" class="form-label">
                         Username
@@ -54,6 +59,10 @@ function SigninComponent() {
                         type="text"
                         class="form-control border"
                         id="username"
+                        value={userCred.u_name}
+                        onChange={(e) =>
+                          setUserCred({ ...userCred, u_name: e.target.value })
+                        }
                         placeholder="Enter username"
                       />
                     </div>
@@ -67,6 +76,10 @@ function SigninComponent() {
                           placeholder="Enter password"
                           aria-label="Password"
                           aria-describedby="password-addon"
+                          value={userCred.u_password}
+                          onChange={(e) =>
+                            setUserCred({ ...userCred, u_password: e.target.value })
+                          }
                         />
                         <button
                           class="btn btn-light"
@@ -81,7 +94,8 @@ function SigninComponent() {
                     <div class="mt-3 d-grid">
                       <button
                         class="btn btn-primary waves-effect waves-light"
-                        type="submit"
+                        type="button"
+                        onClick={submitForm}
                       >
                         Log In
                       </button>
@@ -102,15 +116,10 @@ function SigninComponent() {
                   Don't have an account ?{" "}
                   <a class="fw-medium text-primary">
                     {" "}
-                    <NavLink to="/signup">
-
-                    Signup now{" "}
-                    </NavLink>
+                    <NavLink to="/signup">Signup now </NavLink>
                   </a>{" "}
                 </p>
-                <p>
-                  © 2023 • Devsinfo.in
-                </p>
+                <p>© 2023 • Devsinfo.in</p>
               </div>
             </div>
           </div>
