@@ -2,19 +2,19 @@ import React from "react";
 import UserLinkCard from "./UserLinkCard";
 import leetcode from "../../assets/icons/leetcode.png"
 import codeforces from "../../assets/icons/codeforces.png"
-import gfg from "../../assets/icons/gfg.png"
+import gfgImg from "../../assets/icons/gfg.png"
 import linkedin from "../../assets/icons/linkedin.png"
 
-function UserLinkSection() {
+function UserLinkSection({lc, gfg, cf, li}) {
   return (
     <>
       <div>
         <h6 className="mb-3">Links : </h6>
         <div className="flex">
-          <UserLinkCard image={leetcode} title={"Leetcode"} description={"Solved 500+ problems"}/>
-          <UserLinkCard image={codeforces} title={"Codeforces"} description={"Solved 500+ problems"}/>
-          <UserLinkCard image={gfg} title={"Geeks for Geeks"} description={"Solved 500+ problems"}/>
-          <UserLinkCard image={linkedin} title={"LinkedIn"} description={"Visit my Linked In"}/>
+          <UserLinkCard image={leetcode} title={"Leetcode"} link={lc} />
+          <UserLinkCard image={codeforces} title={"Codeforces"} link={gfg} />
+          <UserLinkCard image={gfgImg} title={"Geeks for Geeks"} link={cf} />
+          <UserLinkCard image={linkedin} title={"LinkedIn"} link={li} />
         </div>
       </div>
     </>

@@ -1,8 +1,9 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import dev from "../../assets/homePageAssets/hexagon.png"
+import React, { useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import dev from "../../assets/homePageAssets/hexagon.png";
 
 function HomeNavbar() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="landing_navbar">
@@ -15,17 +16,26 @@ function HomeNavbar() {
           </NavLink>
         </div>
         <div className="l_body">
-          <>
-            <NavLink to="/" style={{ textDecoration: "none" }}>
-              <span className="mr font-13">Home</span>
-            </NavLink>
-            <NavLink to="/login" style={{ textDecoration: "none" }}>
-              <span className="mr font-13">login</span>
-            </NavLink>
-            <NavLink to="/signup" style={{ textDecoration: "none" }}>
-              <span className="font-13">signup</span>
-            </NavLink>
-          </>
+          {localStorage.getItem("token") === null ? (
+            <>
+              <NavLink to="/login" style={{ textDecoration: "none" }}>
+                <span className="mr font-13">login</span>
+              </NavLink>
+              <NavLink to="/signup" style={{ textDecoration: "none" }}>
+                <span className="font-13">signup</span>
+              </NavLink>
+            </>
+          ) : (
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                localStorage.clear();
+                navigate("/");
+              }}
+            >
+              Logout
+            </button>
+          )}
 
           {/* <span className="font-13" onClick={handleLogout}>Logout</span> */}
         </div>

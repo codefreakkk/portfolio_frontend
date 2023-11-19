@@ -1,18 +1,30 @@
 import { React, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/homePageAssets/hexagon.png";
 import background from "../../assets/images/profile-img.png";
-import useAuth from "../../hooks/useAuth";
+import { LoginUser } from "../../api/Authapi";
 
 function SigninComponent() {
-  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+
   const [userCred, setUserCred] = useState({
     u_name: "",
     u_password: "",
   });
 
-  function submitForm() {
-    console.log(userCred);
+  async function submitForm() {
+    const res = await LoginUser(userCred);
+    if (res.data.success) {
+      const { token, u_name, uid } = res.data;
+
+      // set token and username
+      localStorage.setItem("token", token);
+      localStorage.setItem("u_name", u_name);
+      localStorage.setItem("uid", uid);
+      navigate("/dashboard/home");
+    } else {
+      console.log(res.data.message);
+    }
   }
 
   return (
@@ -78,7 +90,10 @@ function SigninComponent() {
                           aria-describedby="password-addon"
                           value={userCred.u_password}
                           onChange={(e) =>
-                            setUserCred({ ...userCred, u_password: e.target.value })
+                            setUserCred({
+                              ...userCred,
+                              u_password: e.target.value,
+                            })
                           }
                         />
                         <button

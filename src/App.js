@@ -4,14 +4,14 @@ import UserDashboardPage from "./pages/userPages/UserDashboardPage";
 import Home from "./pages/clientPages/Home";
 import NotFound from "./pages/clientPages/NotFound";
 import ProtectUser from "./protect/ProtectUser";
+import Signin from "./pages/clientPages/Signin";
+import Signup from "./pages/clientPages/Signup";
 
 // import CSS
 import "./assets/css/app.min.css";
 import "./assets/css/bootstrap.min.css";
 import "./assets/css/icons.min.css";
 import "./assets/css/style.css";
-import Signin from "./pages/clientPages/Signin";
-import Signup from "./pages/clientPages/Signup";
 
 function App() {
   return (

@@ -2,23 +2,20 @@ import React from "react";
 import SkillSetComponent from "./UserSkillSetComponent";
 import profile from "../../assets/images/profile.jpeg";
 
-function UserDescriptionCard() {
+function UserDescriptionCard({ user }) {
   return (
     <div class="mb-4 input-border">
       <div>
         <div class="row">
           <div class="col-lg-9 col-sm-8">
             <div class="p-4">
-              <h3 class="text-primary">Harsh Said</h3>
-              <p>
-                Software Engineer@GSLab | Full Stack Web Developer | MERN Stack
-                | React | NodeJS
-              </p>
+              <h3 class="text-primary">{user.full_name}</h3>
+              <p>{user.u_description}</p>
 
               <div class="skill-set-container">
-                <SkillSetComponent title={"Backend Developer"} />
-                <SkillSetComponent title={"Node Js"} />
-                <SkillSetComponent title={"Spring Boot"} />
+                {user.skills.map((res) => {
+                  return <SkillSetComponent title={res} />;
+                })}
               </div>
             </div>
 
@@ -30,7 +27,7 @@ function UserDescriptionCard() {
                     style={{ fontSize: "15px" }}
                   ></i>
                 </span>
-                Pune, India
+                {user.u_city}, {user.u_country}
               </div>
               <div className="description-bottom">
                 <span>
