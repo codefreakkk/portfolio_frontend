@@ -12,8 +12,8 @@ function UserLinkSection({lc, gfg, cf, li}) {
         <h6 className="mb-3">Links : </h6>
         <div className="flex">
           <UserLinkCard image={leetcode} title={"Leetcode"} link={lc} />
-          <UserLinkCard image={codeforces} title={"Codeforces"} link={gfg} />
-          <UserLinkCard image={gfgImg} title={"Geeks for Geeks"} link={cf} />
+          <UserLinkCard image={codeforces} title={"Codeforces"} link={cf} />
+          <UserLinkCard image={gfgImg} title={"Geeks for Geeks"} link={gfg} />
           <UserLinkCard image={linkedin} title={"LinkedIn"} link={li} />
         </div>
       </div>

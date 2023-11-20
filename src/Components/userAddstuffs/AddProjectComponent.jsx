@@ -8,7 +8,7 @@ function AddProjectComponent() {
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
-              <StuffHeader title={"Add Projects"} url={""}/>
+              <StuffHeader title={"Add Projects"} url={""} />
               {/* Route body */}
               <div>
                 <form>

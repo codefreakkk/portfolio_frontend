@@ -13,7 +13,7 @@ function UserDashborad() {
 
   // project state
   const [projectState, setProjectState] = useState(false);
-  const [project, setProject] = useState(null);
+  const [projects, setProject] = useState(null);
 
   // get user data
   useEffect(() => {
@@ -36,28 +36,39 @@ function UserDashborad() {
     (async () => {
       const result = await getProject();
       const data = result.data;
-      console.log(data);
+      if (data != null && data.success === true) {
+        setProject(data.data);
+        setProjectState(true);
+        // console.log(data.data);
+      } else {
+        // navigate to home later while fixing bug
+        alert("Some error occured while fetching projects");
+      }
     })();
   }, []);
 
   return (
     <>
-      {userState ? (
-        <div className="user-dashboard-container">
-          <UserDescriptionCard user={user} />
-          <UserShowcaseSection />
-          <UserGithubChartSection />
-          <UserProjectSection />
+      <div className="user-dashboard-container">
+        {userState ? <UserDescriptionCard user={user} /> : <div>Loading</div>}
+        <UserShowcaseSection />
+        <UserGithubChartSection />
+        {projectState ? (
+          <UserProjectSection projects={projects} />
+        ) : (
+          <div>Loading</div>
+        )}
+        {userState ? (
           <UserLinkSection
             lc={user.leetcode}
             gfg={user.gfg}
             cf={user.codeforces}
             li={user.linkedin}
           />
-        </div>
-      ) : (
-        "Loading"
-      )}
+        ) : (
+          <div>Loading</div>
+        )}
+      </div>
     </>
   );
 }

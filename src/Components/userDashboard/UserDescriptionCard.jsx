@@ -13,6 +13,7 @@ function UserDescriptionCard({ user }) {
               <p>{user.u_description}</p>
 
               <div class="skill-set-container">
+                {user.skills.length === 0 ? "Enter Your Skill set" : ""}
                 {user.skills.map((res) => {
                   return <SkillSetComponent title={res} />;
                 })}

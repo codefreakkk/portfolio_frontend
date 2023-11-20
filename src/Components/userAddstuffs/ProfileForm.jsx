@@ -1,6 +1,26 @@
-import React from "react";
+import React, {useState} from "react";
 
+
+// need to worl on this section
 function ProfileForm() {
+  const [full_name, setFullName] = useState("");
+  const [u_email, setEmail] = useState("");
+  const [u_contact, setContact] = useState("");
+  const [u_description, setDescription] = useState("");
+  const [u_company_name, setCompanyName] = useState("");
+  const [u_work_experience, setWorkExperience] = useState("");
+  const [u_city, setCity] = useState("");
+  const [u_country, setCountry] = useState("");
+  const [leetcode, setLeetcode] = useState("");
+  const [codeforces, setCodeforces] = useState("");
+  const [gfg, setGFG] = useState("");
+  const [linkedin, setLinkedin] = useState(""); 
+  const [skills, setSkills] = useState([]);
+
+  function addSkills() {
+
+  }
+
   return (
     <>
       <div class="col-xl-12">
@@ -16,6 +36,8 @@ function ProfileForm() {
                   type="text"
                   class="form-control input-border"
                   id="formrow-email-input"
+                  value={full_name}
+                  onChange={(e) => setFullName(e.target.value)}
                   placeholder="Enter Your Full Name"
                 />
               </div>
@@ -27,6 +49,8 @@ function ProfileForm() {
                 </label>
                 <input
                   type="text"
+                  value={u_email}
+                  onChange={(e) => setEmail(e.target.value)}
                   class="form-control input-border"
                   id="formrow-password-input"
                   placeholder="Enter Your Email"
@@ -43,6 +67,8 @@ function ProfileForm() {
                 </label>
                 <input
                   type="text"
+                  value={u_company_name}
+                  onChange={(e) => setCompanyName(e.target.value)}
                   class="form-control input-border"
                   id="formrow-email-input"
                   placeholder="Enter Company name"
@@ -56,6 +82,8 @@ function ProfileForm() {
                 </label>
                 <input
                   type="text"
+                  value={u_work_experience}
+                  onChange={(e) => setWorkExperience(e.target.value)}
                   class="form-control input-border"
                   id="formrow-password-input"
                   placeholder="Enter Work Experience"
@@ -71,6 +99,8 @@ function ProfileForm() {
                 required
                 class="form-control input-border"
                 rows="3"
+                value={u_description}
+                onChange={(e) => setDescription(e.target.value)}
               ></textarea>
             </div>
           </div>
@@ -91,14 +121,21 @@ function ProfileForm() {
               </div>
               <div>
                 <button
-                  type="submit"
+                  type="button"
                   class="btn btn-primary waves-effect waves-light"
+                  onClick={addSkills}
                 >
                   Submit
                 </button>
               </div>
             </div>
+            {/* skills container */}
+            <div>
+              <span className="mr-5">Node JS</span>
+              <span className="mr-5">Node JS</span>
+            </div>
           </div>
+          
           {/* Skill set end */}
 
           <div class="row">
@@ -109,6 +146,8 @@ function ProfileForm() {
                 </label>
                 <input
                   type="text"
+                  value={u_country}
+                  onChange={(e) => setCountry(e.target.value)}
                   class="form-control input-border"
                   id="formrow-inputCity"
                   placeholder="Enter Your Living City"
@@ -122,6 +161,8 @@ function ProfileForm() {
                 </label>
                 <input
                   type="text"
+                  value={u_city}
+                  onChange={(e) => setCity(e.target.value)}
                   class="form-control input-border"
                   id="formrow-inputCity"
                   placeholder="Enter Your Living City"
@@ -135,6 +176,8 @@ function ProfileForm() {
                 </label>
                 <input
                   type="text"
+                  value={u_contact}
+                  onChange={(e) => setContact(e.target.value)}
                   class="form-control input-border"
                   id="formrow-inputCity"
                   placeholder="Enter Your Living City"
@@ -155,6 +198,8 @@ function ProfileForm() {
                 </label>
                 <input
                   type="text"
+                  value={leetcode}
+                  onChange={(e) => setLeetcode(e.target.value)}
                   class="form-control input-border"
                   id="formrow-email-input"
                   placeholder="Enter Your Full Name"
@@ -168,6 +213,8 @@ function ProfileForm() {
                 </label>
                 <input
                   type="text"
+                  value={codeforces}
+                  onChange={(e) => setCodeforces(e.target.value)}
                   class="form-control input-border"
                   id="formrow-password-input"
                   placeholder="Enter Your Email"
@@ -184,6 +231,8 @@ function ProfileForm() {
                 </label>
                 <input
                   type="text"
+                  value={gfg}
+                  onChange={(e) => setGFG(e.target.value)}
                   class="form-control input-border"
                   id="formrow-email-input"
                   placeholder="Enter Your Full Name"
@@ -198,6 +247,8 @@ function ProfileForm() {
                 </label>
                 <input
                   type="text"
+                  value={linkedin}
+                  onChange={(e) => setLinkedin(e.target.value)}
                   class="form-control input-border"
                   id="formrow-password-input"
                   placeholder="Enter Your Email"

@@ -6,7 +6,7 @@ function UserLinkCard({ image, title, link }) {
     <div class="card mini-stats-wid my-project-card-container input-border">
       <div class="card-body">
         <div class="d-flex flex-wrap">
-          <div class="flex">
+          <div class="flex pointer">
             <div className="icon mr-5">
               <img src={image} alt="" height="20" className="" />
             </div>

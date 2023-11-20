@@ -1,7 +1,9 @@
 import React from "react";
 import avtar from "../../assets/images/users/avatar-1.jpg";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
   return (
     <>
       <header id="page-topbar">
@@ -44,7 +46,14 @@ function Header() {
                 src={avtar}
                 alt="Header Avatar"
               />
-              <span class="d-none d-xl-inline-block ms-1 color-white font-weight-500" key="t-henry">
+              <span
+                class="d-none pointer d-xl-inline-block ms-1 color-white font-weight-500"
+                key="t-henry"
+                onClick={() => {
+                  localStorage.clear();
+                  navigate("/");
+                }}
+              >
                 Logout
               </span>
             </div>

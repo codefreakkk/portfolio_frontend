@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function UserProjectCard() {
+function UserProjectCard({ projects }) {
   return (
     <>
       <div class="col-xl-4 col-sm-6">
@@ -11,7 +11,11 @@ function UserProjectCard() {
               <div class="float-end ms-2">
                 <div class="dropdown mb-2">
                   <div class="font-size-16 text-muted share-container">
+                    <span onClick={() => {
+                      window.location.href = projects.github_repo
+                    }}>
                     <i class="bx bx-share-alt"></i>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -22,19 +26,16 @@ function UserProjectCard() {
               </div>
               <div class="d-flex">
                 <div class="overflow-hidden me-auto">
-                  
-                  <NavLink to={`/dashboard/projects/12`}>
+                  <NavLink to={`/dashboard/projects/${projects.uid}/${projects._id}`}>
                     <div className="pointer">
                       <h5 class="font-size-14 text-truncate mb-1">
-                        <a href="javascript: void(0);" class="text-body">
-                          Devsinfo - Make your portfolio
-                        </a>
+                        <a class="text-body">{projects.project_name}</a>
                       </h5>
                     </div>
                   </NavLink>
 
                   <p class="text-muted text-truncate mb-0">
-                    This project description
+                    {projects.description}
                   </p>
                 </div>
               </div>
