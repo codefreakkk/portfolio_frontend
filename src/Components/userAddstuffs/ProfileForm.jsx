@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-
+import React, { useEffect, useState } from "react";
+import { addPersonalDetails, getUser } from "../../api/UserApi";
 
 // need to worl on this section
 function ProfileForm() {
@@ -14,11 +14,95 @@ function ProfileForm() {
   const [leetcode, setLeetcode] = useState("");
   const [codeforces, setCodeforces] = useState("");
   const [gfg, setGFG] = useState("");
-  const [linkedin, setLinkedin] = useState(""); 
-  const [skills, setSkills] = useState([]);
+  const [linkedin, setLinkedin] = useState("");
+  const [skillsArray, setSkillsArray] = useState([]);
+  const [skills, setSkills] = useState("");
+
+  // get all the data
+  useEffect(() => {
+    (async () => {
+      const result = await getUser();
+      const data = result.data;
+      if (data != null && data.success) {
+        const user = data.data;
+        setFullName(user.full_name);
+        setEmail(user.u_email);
+        setContact(user.u_contact);
+        setDescription(user.u_description);
+        setCompanyName(user.u_company_name);
+        setWorkExperience(user.u_work_experience);
+        setCity(user.u_city);
+        setCountry(user.u_country);
+        setLeetcode(user.leetcode);
+        setCodeforces(user.codeforces);
+        setGFG(user.gfg);
+        setLinkedin(user.linkedin);
+        setSkillsArray(user.skills);
+      } else {
+        console.log("Data not fetched");
+      }
+    })();
+  }, []);
+
+  // validate all fields
+  function checkEmptyFields() {
+    if (
+      !full_name ||
+      !u_email ||
+      !u_contact ||
+      !u_description ||
+      !u_company_name ||
+      !u_work_experience ||
+      !u_city ||
+      !u_country ||
+      !leetcode ||
+      !codeforces ||
+      !gfg ||
+      !linkedin ||
+      skillsArray.length == 0
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   function addSkills() {
+    if (skills.length > 0) {
+      skillsArray.push(skills);
+      setSkillsArray(skillsArray);
+    }
+    setSkills("");
+  }
 
+  async function submitForm() {
+    console.log("Submitting Form");
+
+    // post data
+    if (checkEmptyFields()) {
+      const result = await addPersonalDetails({
+        full_name,
+        u_email,
+        u_contact,
+        u_description,
+        u_company_name,
+        u_work_experience,
+        u_city,
+        u_country,
+        leetcode,
+        gfg,
+        linkedin,
+        skillsArray,
+      });
+      const data = result.data;
+      if (data != null && data.success) {
+        alert(data.message);
+      } else {
+        alert("Some error occured");
+      }
+    } else {
+      alert("Please fill all the details");
+    }
   }
 
   return (
@@ -114,6 +198,8 @@ function ProfileForm() {
               <div class="mr-10" style={{ width: "100%" }}>
                 <input
                   type="text"
+                  value={skills}
+                  onChange={(e) => setSkills(e.target.value)}
                   class="form-control input-border"
                   id="formrow-email-input"
                   placeholder="Enter Your Full Name"
@@ -130,12 +216,17 @@ function ProfileForm() {
               </div>
             </div>
             {/* skills container */}
-            <div>
-              <span className="mr-5">Node JS</span>
-              <span className="mr-5">Node JS</span>
+            <div className="pt-3 flex flex-wrap">
+              {skillsArray.map((result, index) => {
+                return (
+                  <div className="mr-5 skills-container border" key={index}>
+                    {result}
+                  </div>
+                );
+              })}
             </div>
           </div>
-          
+
           {/* Skill set end */}
 
           <div class="row">
@@ -294,6 +385,7 @@ function ProfileForm() {
               type="button"
               class="btn btn-success mt-3 mt-lg-0"
               value="Save"
+              onClick={submitForm}
             />
           </div>
         </form>

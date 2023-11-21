@@ -1,6 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import { updateAccountDetails } from "../../api/UserApi";
 
 function AccountForm() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [cpassword, setCPassword] = useState("");
+
+  // check empty fields
+  function checkEmptyFields() {
+    if (!username || !password || !password) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  async function submitForm() {
+    // check empty fields
+    if (!checkEmptyFields()) {
+      alert("Please fill all fields");
+      return;
+    }
+    // check if password matches
+    if (password != cpassword) {
+      alert("Password does not match");
+      return;
+    }
+
+    // submit form
+    const result = await updateAccountDetails({
+      u_name: username,
+      u_password: password,
+    });
+    const data = result.data;
+    if (data != null && data.success) {
+      console.log(data);
+    } else {
+      console.log(data);
+    }
+  }
+
   return (
     <>
       <div class="col-xl-12">
@@ -15,6 +54,8 @@ function AccountForm() {
               class="form-control input-border"
               id="formrow-firstname-input"
               placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
 
@@ -22,10 +63,12 @@ function AccountForm() {
             <div class="col-md-6">
               <div class="mb-3">
                 <label for="formrow-email-input" class="form-label">
-                  Full name
+                  Password
                 </label>
                 <input
                   type="text"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   class="form-control input-border"
                   id="formrow-email-input"
                   placeholder="Enter Your Full Name"
@@ -35,10 +78,12 @@ function AccountForm() {
             <div class="col-md-6">
               <div class="mb-3">
                 <label for="formrow-password-input" class="form-label">
-                  Email
+                  Confirm Password
                 </label>
                 <input
                   type="text"
+                  value={cpassword}
+                  onChange={(e) => setCPassword(e.target.value)}
                   class="form-control input-border"
                   id="formrow-password-input"
                   placeholder="Enter Your Email"
@@ -47,24 +92,14 @@ function AccountForm() {
             </div>
           </div>
 
-          {/* <div className="mt-4 mb-2">
-            <h5 className="primary-color">Change Username</h5>
-          </div> */}
-
-          <div class="mb-3">
-            <label for="formrow-firstname-input" class="form-label">
-              Password
-            </label>
-            <input
-              type="text"
-              class="form-control input-border"
-              id="formrow-firstname-input"
-              placeholder="password"
-            />
-          </div>
-
           <div className="">
-          <input data-repeater-create type="button" class="btn btn-success mt-3 mt-lg-0" value="Save"/>
+            <input
+              data-repeater-create
+              type="button"
+              class="btn btn-success mt-3 mt-lg-0"
+              value="Save"
+              onClick={submitForm}
+            />
           </div>
         </form>
       </div>

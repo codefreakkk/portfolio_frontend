@@ -26,15 +26,20 @@ function HomeNavbar() {
               </NavLink>
             </>
           ) : (
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                localStorage.clear();
-                navigate("/");
-              }}
-            >
-              Logout
-            </button>
+            <div>
+              <NavLink to="/dashboard/home" style={{ textDecoration: "none" }}>
+                <span className="mr font-13">Dashboard</span>
+              </NavLink>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  localStorage.clear();
+                  navigate("/");
+                }}
+              >
+                Logout
+              </button>
+            </div>
           )}
 
           {/* <span className="font-13" onClick={handleLogout}>Logout</span> */}

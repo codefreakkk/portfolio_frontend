@@ -322,3 +322,17 @@ font-size-12 {
 .mr-5 {
   margin-right: 5px;
 }
+
+.pt-3 {
+  padding-top: 3px;
+}
+
+.skills-container {
+  /* background-color: red; */
+  padding: 5px 5px;
+}
+
+
+.flex-wrap {
+  flex-wrap: wrap;
+}

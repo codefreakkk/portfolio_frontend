@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/homePageAssets/hexagon.png";
 import background from "../../assets/images/profile-img.png";
-import { LoginUser } from "../../api/Authapi";
+import { LoginUser } from "../../api/AuthApi";
 
 function SigninComponent() {
   const navigate = useNavigate();
@@ -13,8 +13,9 @@ function SigninComponent() {
   });
 
   async function submitForm() {
+    console.log("Loging in");
     const res = await LoginUser(userCred);
-    if (res.data.success) {
+    if (res.data != null && res.data.success) {
       const { token, u_name, uid } = res.data;
 
       // set token and username
@@ -23,7 +24,9 @@ function SigninComponent() {
       localStorage.setItem("uid", uid);
       navigate("/dashboard/home");
     } else {
-      console.log(res.data.message);
+      if (res != null) {
+        console.log(res.data.message);
+      }
     }
   }
 
