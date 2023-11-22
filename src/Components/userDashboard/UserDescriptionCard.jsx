@@ -39,6 +39,15 @@ function UserDescriptionCard({ user }) {
                 </span>
                 <span className="me-1">10 </span> Followers
               </div>
+              <div className="description-bottom">
+                <span>
+                  <i
+                    class="bx bx-buildings me-2"
+                    style={{ fontSize: "15px" }}
+                  ></i>
+                </span>
+                <span className="me-1">{user.u_company_name} </span>
+              </div>
             </div>
           </div>
           <div class="col-lg-3 col-sm-4 align-self-center">

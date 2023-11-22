@@ -24,7 +24,7 @@ function SigninComponent() {
       localStorage.setItem("uid", uid);
       navigate("/dashboard/home");
     } else {
-      if (res != null) {
+      if (res.data != null) {
         console.log(res.data.message);
       }
     }

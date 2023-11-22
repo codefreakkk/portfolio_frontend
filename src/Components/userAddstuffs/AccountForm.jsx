@@ -1,23 +1,42 @@
-import React, { useState } from "react";
-import { updateAccountDetails } from "../../api/UserApi";
+import React, { useEffect, useState } from "react";
+import { updateAccountDetails, getUserAccountDetails } from "../../api/UserApi";
 
 function AccountForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
 
+  useEffect(() => {
+    (async () => {
+      const result = await getUserAccountDetails();
+      const data = result.data;
+      if (data != null && data.success) {
+        const user = data.data;
+        setUsername(user.u_name);
+        setPassword(user.u_password);
+        setCPassword(user.u_password);
+      } else {
+        if (data !== undefined) {
+          console.log(data.message);
+        } else {
+          alert("Some error ocurred");
+        }
+      }
+    })();
+  }, []);
+
   // check empty fields
   function checkEmptyFields() {
     if (!username || !password || !password) {
-      return false;
-    } else {
       return true;
+    } else {
+      return false;
     }
   }
 
   async function submitForm() {
     // check empty fields
-    if (!checkEmptyFields()) {
+    if (checkEmptyFields()) {
       alert("Please fill all fields");
       return;
     }

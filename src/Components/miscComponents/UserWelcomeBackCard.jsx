@@ -46,7 +46,6 @@ function UserWelcomeBackCard() {
               </div>
               <div class="mt-4">
                 <a
-                  href="javascript: void(0);"
                   class="btn btn-primary waves-effect waves-light btn-sm"
                 >
                   View Profile <i class="mdi mdi-arrow-right ms-1"></i>

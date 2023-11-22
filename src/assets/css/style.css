@@ -212,7 +212,7 @@
   background-color: white;
   height: 100vh;
   padding: 20px 20px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .font-weight-600 {
@@ -336,3 +336,10 @@ font-size-12 {
 .flex-wrap {
   flex-wrap: wrap;
 }
+
+.pagination-container {
+  /* background-color: red; */
+  display: flex;
+  justify-content: flex-end;
+}
+

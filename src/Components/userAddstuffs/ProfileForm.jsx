@@ -61,9 +61,9 @@ function ProfileForm() {
       !linkedin ||
       skillsArray.length == 0
     ) {
-      return false;
-    } else {
       return true;
+    } else {
+      return false;
     }
   }
 
@@ -80,28 +80,29 @@ function ProfileForm() {
 
     // post data
     if (checkEmptyFields()) {
-      const result = await addPersonalDetails({
-        full_name,
-        u_email,
-        u_contact,
-        u_description,
-        u_company_name,
-        u_work_experience,
-        u_city,
-        u_country,
-        leetcode,
-        gfg,
-        linkedin,
-        skillsArray,
-      });
-      const data = result.data;
-      if (data != null && data.success) {
-        alert(data.message);
-      } else {
-        alert("Some error occured");
-      }
+      alert("Please fill all fields");
+      return;
+    }
+    const result = await addPersonalDetails({
+      full_name,
+      u_email,
+      u_contact,
+      u_description,
+      u_company_name,
+      u_work_experience,
+      u_city,
+      u_country,
+      leetcode,
+      gfg,
+      linkedin,
+      skillsArray,
+    });
+    
+    const data = result.data;
+    if (data != null && data.success) {
+      alert(data.message);
     } else {
-      alert("Please fill all the details");
+      alert("Some error occured");
     }
   }
 

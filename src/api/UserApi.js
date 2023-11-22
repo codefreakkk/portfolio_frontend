@@ -1,7 +1,7 @@
 import axios from "axios";
 import { baseURL } from "./config";
 
-// fetc user by id API
+// fetch user by id API
 export const getUser = async () => {
   const token = localStorage.getItem("token");
   const uid = localStorage.getItem("uid");
@@ -15,6 +15,21 @@ export const getUser = async () => {
     .then((res) => {
       return res;
     })
+    .catch((err) => err);
+};
+
+// fetch user account details
+export const getUserAccountDetails = async () => {
+  const token = localStorage.getItem("token");
+  const uid = localStorage.getItem("uid");
+
+  return await axios
+    .get(`${baseURL}/getaccountdetailsbyid/${uid}`, {
+      headers: {
+        Authorization: token,
+      },
+    })
+    .then((res) => res)
     .catch((err) => err);
 };
 
@@ -77,19 +92,10 @@ export const updateAccountDetails = async ({ u_name, u_password }) => {
     .catch((err) => err);
 };
 
-// move it to project API file
-export const getProject = async () => {
-  const token = localStorage.getItem("token");
-  const uid = localStorage.getItem("uid");
-
+// signup API
+export const signUp = async (payload) => {
   return await axios
-    .get(`${baseURL}/getallprojectsbyid/${uid}`, {
-      headers: {
-        Authorization: token,
-      },
-    })
-    .then((res) => {
-      return res;
-    })
+    .post(`${baseURL}/signup`, payload)
+    .then((res) => res)
     .catch((err) => err);
 };

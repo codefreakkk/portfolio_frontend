@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/homePageAssets/hexagon.png";
 import background from "../../assets/images/profile-img.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { signUp } from "../../api/UserApi";
 
 function SignupComponent() {
+  const navigate = useNavigate();
+  
+  const [u_name, setUname] = useState("");
+  const [u_password, setPassword] = useState("");
+  const [u_cpassword, setCPassword] = useState("");
+
+  async function submitForm() {
+    if (!u_name || !u_password || !u_cpassword) {
+      alert("Please fill all fields");
+      return;
+    }
+    if (u_password != u_cpassword) {
+      alert("Password does not match");
+      return;
+    }
+    const result = await signUp({ u_name, u_password });
+    const data = result.data;
+    if (data != null && data.success) {
+      navigate("/login")
+    } else {
+      console.log(result.data);
+    }
+  }
+
   return (
     <>
       <div class="account-pages my-5 pt-sm-5">
@@ -50,6 +75,8 @@ function SignupComponent() {
                           class="form-control border"
                           id="username"
                           placeholder="Enter username"
+                          value={u_name}
+                          onChange={(e) => setUname(e.target.value)}
                         />
                       </div>
 
@@ -61,6 +88,8 @@ function SignupComponent() {
                             class="form-control border"
                             placeholder="Enter password"
                             aria-label="Password"
+                            value={u_password}
+                            onChange={(e) => setPassword(e.target.value)}
                             aria-describedby="password-addon"
                           />
                           <button
@@ -82,6 +111,8 @@ function SignupComponent() {
                             placeholder="Enter password"
                             aria-label="Password"
                             aria-describedby="password-addon"
+                            value={u_cpassword}
+                            onChange={(e) => setCPassword(e.target.value)}
                           />
                           <button
                             class="btn btn-light"
@@ -96,7 +127,8 @@ function SignupComponent() {
                       <div class="mt-3 d-grid">
                         <button
                           class="btn btn-primary waves-effect waves-light"
-                          type="submit"
+                          type="button"
+                          onClick={submitForm}
                         >
                           Sign up
                         </button>

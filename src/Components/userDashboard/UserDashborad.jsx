@@ -4,7 +4,8 @@ import UserShowcaseSection from "./UserShowcaseSection";
 import UserGithubChartSection from "./UserGithubChartSection";
 import UserProjectSection from "./UserProjectSection";
 import UserLinkSection from "./UserLinkSection";
-import { getProject, getUser } from "../../api/UserApi";
+import {  getUser } from "../../api/UserApi";
+import { getProject } from "../../api/projectApi";
 
 function UserDashborad() {
   // user state
