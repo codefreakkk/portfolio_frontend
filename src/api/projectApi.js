@@ -54,3 +54,38 @@ export const getProjectByIdAndPid = async ({ uid, pid }) => {
     .then((res) => res)
     .catch((err) => err);
 };
+
+export const addLike = async (pid) => {
+  const token = localStorage.getItem("token");
+
+  return await axios
+    .put(
+      `${baseURL}/updateprojectlike/${pid}`,
+      {},
+      {
+        headers: { Authorization: token },
+      }
+    )
+    .then((res) => res)
+    .catch((err) => err);
+};
+
+// update project
+export const updateProjectById = async (payload) => {
+  const token = localStorage.getItem("token");
+
+  return await axios
+    .put(`${baseURL}/updateprojectbyid`, payload, {
+      headers: { Authorization: token },
+    })
+    .then((res) => res)
+    .catch((err) => err);
+};
+
+export const deleteProjectById = async (pid) => {
+  const token = localStorage.getItem("token");
+
+  return await axios.delete(`${baseURL}/deleteprojectbyid/${pid}`, {
+    headers: { Authorization: token },
+  });
+};

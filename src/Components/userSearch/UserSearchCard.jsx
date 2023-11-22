@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function UserSearchCard({ user, name, description }) {
+function UserSearchCard({ user, uid, name, description }) {
   return (
     <>
       <div class="col-xl-4 col-sm-6">
@@ -25,7 +25,7 @@ function UserSearchCard({ user, name, description }) {
               <div class="d-flex">
                 <div class="overflow-hidden me-auto">
                   <h5 class="font-size-14 text-truncate mb-1">
-                    <NavLink to="/dashboard/user/12">
+                    <NavLink to={`/dashboard/user/${uid}`}>
                       <a class="text-body">
                         {name}
                       </a>

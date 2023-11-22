@@ -13,6 +13,7 @@ import AddProjectComponent from "../../Components/userAddstuffs/AddProjectCompon
 import AddPersonalDetails from "../../Components/userAddstuffs/AddPersonalDetails";
 import UserProjectPage from "./UserProjectPage";
 import UserProfilePage from "./UserProfilePage";
+import UserEditProject from "../../Components/userDashboard/UserEditProject";
 function UserHomePage() {
   return (
     <>
@@ -36,6 +37,7 @@ function UserHomePage() {
             <Route path="/addprojects" element={<AddProjectComponent />} />
             <Route path="/projects/:uid/:pid" element={<UserProjectPage />} />
             <Route path="/user/:id" element={<UserProfilePage />} />
+            <Route path="/editproject/:uid/:pid" element={<UserEditProject/>} />
             <Route
               path="/addpersonaldetails/*"
               element={<AddPersonalDetails />}

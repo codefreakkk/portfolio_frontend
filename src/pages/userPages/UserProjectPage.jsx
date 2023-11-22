@@ -3,20 +3,31 @@ import StuffHeader from "../../Components/userAddstuffs/StuffHeader";
 import image from "../../assets/images/small/img-2.jpg";
 import { useParams } from "react-router-dom";
 import ViewProjectCommentsCard from "../../Components/userProjects/ViewProjectCommentsCard";
-import { getProjectByIdAndPid } from "../../api/projectApi";
+import { getProjectByIdAndPid, addLike } from "../../api/projectApi";
+import { addComment, getComment } from "../../api/projectCommentApi";
 
 function UserProjectPage() {
   const { uid, pid } = useParams();
-  const [state, setState] = useState(false);
-  const [data, setData] = useState({});
 
+  // project details
+  const [projectState, setProjectState] = useState(false);
+  const [data, setData] = useState({});
+  const [like, setLike] = useState(0);
+
+  // project comment
+  const [comment_description, setProjectDescription] = useState("");
+  const [commentState, setCommentState] = useState(false);
+  const [commentData, setCommentData] = useState([]);
+
+  // fetch project details
   useEffect(() => {
     (async () => {
       const result = await getProjectByIdAndPid({ uid, pid });
       const data = result.data;
       if (data != null && data.success) {
         setData(data.data);
-        setState(true);
+        setProjectState(true);
+        setLike(parseInt(data.data.like));
         console.log(data.data);
       } else {
         console.log(result.data);
@@ -24,9 +35,42 @@ function UserProjectPage() {
     })();
   }, []);
 
+  // fetch project comment details
+  useEffect(() => {
+    (async () => {
+      const result = await getComment(pid);
+      const data = result.data;
+      if (data != null && data.success) {
+        setCommentData(data.data);
+        setCommentState(true);
+        console.log(data.data);
+      } else {
+        console.log(result);
+      }
+    })();
+  }, []);
+
+  // submit comment form
+  async function sumbitComment() {
+    const result = await addComment({ pid, comment_description });
+    const data = result.data;
+    if (data != null && data.success) {
+      console.log(data);
+      setProjectDescription("");
+    } else {
+      console.log(result);
+    }
+  }
+
+  // add like
+  async function addProjectLike() {
+    setLike(like + 1);
+    await addLike(pid);
+  }
+
   return (
     <>
-    NOTE Need to change rendering method (state code) do it later
+      NOTE Need to change rendering method (state code) do it later
       <div class="row" style={{ width: "70%" }}>
         <div class="col-lg-12">
           <div class="card pl-5">
@@ -45,9 +89,9 @@ function UserProjectPage() {
                     </div>
                   </div>
                   <div className="project-right-side">
-                    <div className="upvote-button">
+                    <div className="upvote-button" onClick={addProjectLike}>
                       <div className="upvote-button-leftside">Upvote</div>
-                      <div className="upvote-button-rightside">6</div>
+                      <div className="upvote-button-rightside">{like}</div>
                     </div>
 
                     {/* open project */}
@@ -96,6 +140,10 @@ function UserProjectPage() {
                       <div class="mr-10" style={{ width: "100%" }}>
                         <input
                           type="text"
+                          value={comment_description}
+                          onChange={(e) =>
+                            setProjectDescription(e.target.value)
+                          }
                           class="form-control input-border project-comment radius-50"
                           id="formrow-email-input"
                           placeholder="Post your comment"
@@ -103,7 +151,8 @@ function UserProjectPage() {
                       </div>
                       <div>
                         <button
-                          type="submit"
+                          type="button"
+                          onClick={sumbitComment}
                           class="btn color-light-green radius-50 waves-effect waves-light"
                         >
                           Submit
@@ -120,8 +169,18 @@ function UserProjectPage() {
                     Comments :
                   </h5>
                   {/* Comments body */}
-                  <ViewProjectCommentsCard />
-                  <ViewProjectCommentsCard />
+                  {commentState
+                    ? commentData.map((result, index) => {
+                        return (
+                          <ViewProjectCommentsCard
+                            key={index}
+                            u_name={result.u_name}
+                            comment_description={result.comment_description}
+                          />
+                        );
+                      })
+                    : ""}
+                  {commentData.length == 0 ? "No Comments to Show" : ""}
                 </div>
               </div>
             </div>

@@ -82,7 +82,13 @@ function UserProjectSearchSection() {
           <div className="row user-project-container-inner">
             {state
               ? data.map((result, index) => {
-                  return <UserProjectCard key={index} projects={result} />;
+                  return (
+                    <UserProjectCard
+                      key={index}
+                      projects={result}
+                      state={false}
+                    />
+                  );
                 })
               : "Loading"}
           </div>

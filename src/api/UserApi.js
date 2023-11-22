@@ -99,3 +99,13 @@ export const signUp = async (payload) => {
     .then((res) => res)
     .catch((err) => err);
 };
+
+export const getAllUsersPagination = async (page) => {
+  const token = localStorage.getItem("token");
+  return await axios
+    .get(`${baseURL}/getalluser-pagination/${page}`, {
+      headers: { Authorization: token },
+    })
+    .then((res) => res)
+    .catch((err) => err);
+};

@@ -1,6 +1,6 @@
 import React from "react";
 
-function ViewProjectCommentsCard() {
+function ViewProjectCommentsCard({ u_name, comment_description }) {
   return (
     <>
       <div>
@@ -14,13 +14,10 @@ function ViewProjectCommentsCard() {
           </div>
           <div class="flex-grow-1">
             <h5 class="font-size-14 mb-1">
-              Delores Williams{" "}
-              <small class="text-muted float-end">1 hr Ago</small>
+              {u_name}
+              {/* <small class="text-muted float-end">1 hr Ago</small> */}
             </h5>
-            <p class="text-muted">
-              If several languages coalesce, the grammar of the resulting
-              language is more simple and regular than that of the individual
-            </p>
+            <p class="text-muted">{comment_description}</p>
           </div>
         </div>
       </div>

@@ -15,6 +15,8 @@ function UserPage() {
         title={"User Profile"}
       />
       <div className="user-dashboard-container">
+
+        {/* need to send user as a prop */}
         <UserDescriptionCard />
         <UserShowcaseSection />
         <UserGithubChartSection />
