@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import UserDescriptionCard from "../../Components/UserProfilePageComponents/UserDescriptionCard";
-import UserShowcaseSection from "../../Components/UserProfilePageComponents/UserShowcaseSection";
 import UserGithubChartSection from "../../Components/UserProfilePageComponents/UserGithubChartSection";
 import UserProjectSection from "../../Components/UserProfilePageComponents/UserProjectSection";
 import UserLinkSection from "../../Components/UserProfilePageComponents/UserLinkSection";

@@ -26,6 +26,14 @@ export const getProject = async (uid) => {
     .catch((err) => err);
 };
 
+// get all projects by user id (PUBLIC API)
+export const getAllProjectsByUserId = async (uid) => {
+  return await axios
+    .get(`${baseURL}/getallprojectsbyuserid/${uid}`)
+    .then((res) => res)
+    .catch((err) => err);
+}
+
 // pagination
 export const getProjectPagination = async (page) => {
   const token = localStorage.getItem("token");
@@ -88,3 +96,5 @@ export const deleteProjectById = async (pid) => {
     headers: { Authorization: token },
   });
 };
+
+

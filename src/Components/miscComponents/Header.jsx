@@ -1,6 +1,6 @@
 import React from "react";
 import avtar from "../../assets/images/users/avatar-1.jpg";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Header() {
   const navigate = useNavigate();
@@ -9,14 +9,16 @@ function Header() {
       <header id="page-topbar">
         <div class="navbar-header">
           <div class="d-flex">
-            <div class="navbar-brand-box">
-              <a class="logo logo-light">
-                <span class="logo-sm">PeerList</span>
-                <span class="logo-lg font_size_20px color-white">
-                  E-Portfolio
-                </span>
-              </a>
-            </div>
+            <NavLink to="/">
+              <div class="navbar-brand-box">
+                <a class="logo logo-light">
+                  <span class="logo-sm">PeerList</span>
+                  <span class="logo-lg font_size_20px color-white">
+                    E-Portfolio
+                  </span>
+                </a>
+              </div>
+            </NavLink>
 
             <button
               type="button"

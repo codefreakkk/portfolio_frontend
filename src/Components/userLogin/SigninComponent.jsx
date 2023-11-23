@@ -22,6 +22,7 @@ function SigninComponent() {
       localStorage.setItem("token", token);
       localStorage.setItem("u_name", u_name);
       localStorage.setItem("uid", uid);
+      console.log(res.data);
       navigate("/dashboard/home");
     } else {
       if (res.data != null) {

@@ -1,6 +1,6 @@
 import React from "react";
-import SkillSetComponent from "./UserSkillSetComponent";
-import profile from "../../assets/images/profile.jpeg";
+import SkillSetComponent from "../../../Components/userDashboard/UserSkillSetComponent";
+import profile from "../../../assets/images/profile.jpeg";
 
 function UserDescriptionCard({ user }) {
   return (
@@ -41,12 +41,10 @@ function UserDescriptionCard({ user }) {
               </div>
               <div className="description-bottom">
                 <span>
-                  <i
-                    class="bx bx-upvote me-2"
-                    style={{ fontSize: "15px" }}
-                  ></i>
+                  <i class="bx bx-upvote me-2" style={{ fontSize: "15px" }}></i>
                 </span>
-                <span className="me-1">Experience - </span> <span>{user.u_work_experience} Yrs</span>
+                <span className="me-1">Experience - </span>{" "}
+                <span>{user.u_work_experience} Yrs</span>
               </div>
             </div>
           </div>

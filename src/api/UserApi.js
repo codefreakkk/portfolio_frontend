@@ -149,3 +149,15 @@ export const getFollowing = async (uid) => {
     .then((res) => res)
     .catch((err) => err);
 };
+
+// get user by name API
+export const getUserName = async (uname) => {
+
+  return await axios
+    .get(`${baseURL}/getuserbyname/${uname}`, {
+    })
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => err);
+};
