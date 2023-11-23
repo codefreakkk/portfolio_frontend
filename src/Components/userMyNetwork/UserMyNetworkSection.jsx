@@ -17,7 +17,7 @@ function UserMyNetworkSection() {
 
               <div>
                 <ul class="nav nav-tabs nav-tabs-custom">
-                  <li class="nav-item">
+                  {/* <li class="nav-item">
                     <NavLink to="/dashboard/mynetwork/peers">
                       {({ isActive, isPending, isTransitioning }) => (
                         <a
@@ -27,7 +27,7 @@ function UserMyNetworkSection() {
                         </a>
                       )}
                     </NavLink>
-                  </li>
+                  </li> */}
 
                   <li class="nav-item">
                     <NavLink to="/dashboard/mynetwork/followers">

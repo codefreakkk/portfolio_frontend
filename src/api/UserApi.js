@@ -99,12 +99,29 @@ export const signUp = async (payload) => {
     .catch((err) => err);
 };
 
-export const getAllUsersPagination = async (page) => {
+export const getAllUsersPagination = async ({ uid, page }) => {
   const token = localStorage.getItem("token");
+
   return await axios
-    .get(`${baseURL}/getalluser-pagination/${page}`, {
+    .get(`${baseURL}/getallusers/${uid}/${page}`, {
       headers: { Authorization: token },
     })
+    .then((res) => res)
+    .catch((err) => err);
+};
+
+// follow user API
+export const followUser = async ({ follower_id, uid }) => {
+  const token = localStorage.getItem("token");
+
+  return await axios
+    .post(
+      `${baseURL}/follow`,
+      { follower_id, uid },
+      {
+        headers: { Authorization: token },
+      }
+    )
     .then((res) => res)
     .catch((err) => err);
 };

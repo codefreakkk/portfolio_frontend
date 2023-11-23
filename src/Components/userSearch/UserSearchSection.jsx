@@ -10,9 +10,15 @@ function UserSearchSection() {
   const [data, setData] = useState([]);
   const [state, setState] = useState(false);
 
+  // follow button atestates
+  const [followState, setFollowState] = useState(false);
+
+  // grap user id
+  const uid = localStorage.getItem("uid");
+
   useEffect(() => {
     (async () => {
-      const result = await getAllUsersPagination(page);
+      const result = await getAllUsersPagination({uid, page});
       const data = result.data;
       if (data != null && data.success) {
         setPageCount(data.pageCount);
@@ -20,7 +26,7 @@ function UserSearchSection() {
         setState(true);
       }
     })();
-  }, [page]);
+  }, [page, followState]);
 
   return (
     <>
@@ -94,6 +100,8 @@ function UserSearchSection() {
                     uid={result._id}
                     name={result.u_name}
                     description={result.u_description}
+                    followState={followState}
+                    setFollowState={setFollowState}
                   />
                 );
               })
