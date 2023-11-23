@@ -2,9 +2,8 @@ import axios from "axios";
 import { baseURL } from "./config";
 
 // fetch user by id API
-export const getUser = async () => {
+export const getUser = async (uid) => {
   const token = localStorage.getItem("token");
-  const uid = localStorage.getItem("uid");
 
   return await axios
     .get(`${baseURL}/getuserbyid/${uid}`, {

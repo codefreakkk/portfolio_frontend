@@ -17,7 +17,6 @@ function UserSearchSection() {
       if (data != null && data.success) {
         setPageCount(data.pageCount);
         setData(data.data);
-        console.log(data.data);
         setState(true);
       }
     })();
@@ -83,17 +82,22 @@ function UserSearchSection() {
         {/* Pagination ends */}
 
         <div className="row user-search-container">
-          {data.map((result, index) => {
-            return (
-              <UserSearchCard
-                key={index}
-                user={user}
-                uid={result._id}
-                name={result.u_name}
-                description={result.u_description}
-              />
-            );
-          })}
+          {state
+            ? data.map((result, index) => {
+                if (result._id == localStorage.getItem("uid")) {
+                  return;
+                }
+                return (
+                  <UserSearchCard
+                    key={index}
+                    user={user}
+                    uid={result._id}
+                    name={result.u_name}
+                    description={result.u_description}
+                  />
+                );
+              })
+            : "Loading"}
         </div>
       </div>
     </>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import UserProjectCard from "../userProjects/UserProjectCard";
 import { getProject } from "../../api/projectApi";
 
-function UserProjectSection() {
+function UserProjectSection({uid}) {
   // project state
   const [projectState, setProjectState] = useState(false);
   const [projects, setProject] = useState([]);
@@ -10,7 +10,6 @@ function UserProjectSection() {
 
   // get project data
   useEffect(() => {
-    const uid = localStorage.getItem("uid");
     (async () => {
       const result = await getProject(uid);
       const data = result.data;
@@ -41,7 +40,7 @@ function UserProjectSection() {
                   <UserProjectCard
                     key={index}
                     projects={result}
-                    state={true}
+                    state={false}
                     deleteState={deleteState}
                     setDeleteState={setDeleteState}
                   />

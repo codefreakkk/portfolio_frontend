@@ -13,9 +13,8 @@ export const addProject = async (payload) => {
 };
 
 // get all projects of user
-export const getProject = async () => {
+export const getProject = async (uid) => {
   const token = localStorage.getItem("token");
-  const uid = localStorage.getItem("uid");
 
   return await axios
     .get(`${baseURL}/getallprojectsbyid/${uid}`, {

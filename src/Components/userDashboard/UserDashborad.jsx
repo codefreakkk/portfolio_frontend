@@ -10,11 +10,12 @@ function UserDashborad() {
   // user state
   const [userState, setUserState] = useState(false);
   const [user, setUser] = useState(null);
+  const uid = localStorage.getItem("uid");
 
   // get user data
   useEffect(() => {
     (async () => {
-      const result = await getUser();
+      const result = await getUser(uid);
       const data = result.data;
       if (data != null && data.success === true) {
         setUser(data.data);

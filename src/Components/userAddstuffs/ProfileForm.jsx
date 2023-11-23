@@ -20,8 +20,10 @@ function ProfileForm() {
 
   // get all the data
   useEffect(() => {
+    const uid = localStorage.getItem("uid");
+    
     (async () => {
-      const result = await getUser();
+      const result = await getUser(uid);
       const data = result.data;
       if (data != null && data.success) {
         const user = data.data;
@@ -166,7 +168,7 @@ function ProfileForm() {
                   Work Experience
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   value={u_work_experience}
                   onChange={(e) => setWorkExperience(e.target.value)}
                   class="form-control input-border"

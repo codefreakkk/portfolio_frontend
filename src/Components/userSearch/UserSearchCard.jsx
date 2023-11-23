@@ -12,7 +12,7 @@ function UserSearchCard({ user, uid, name, description }) {
                 <div class="dropdown mb-2">
                   <div class="font-size-12 text-muted follow-button">
                     {/* follow button */}
-                    <div className="follow">Follow</div>
+                    <div className="follow pointer">Follow</div>
                   </div>
                 </div>
               </div>

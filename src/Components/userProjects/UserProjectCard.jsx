@@ -1,13 +1,18 @@
-import React from "react";
-import { NavLink, useParams } from "react-router-dom";
+import React, {useState} from "react";
+import { NavLink } from "react-router-dom";
 import { deleteProjectById } from "../../api/projectApi";
+import {ThreeDots} from "react-loader-spinner";
 
 function UserProjectCard({ projects, state, deleteState, setDeleteState }) {
+  const [deleteLoading, setDeleteLoading] = useState(false);
+
   async function deleteProject() {
+    setDeleteLoading(true);
     const result = await deleteProjectById(projects._id);
+
     if (result) {
-      console.log("Project deleted");
       setDeleteState(!deleteState);
+      setDeleteLoading(false);
     } else {
       alert("Some error occured while deleting project");
     }
@@ -23,14 +28,29 @@ function UserProjectCard({ projects, state, deleteState, setDeleteState }) {
                 <div class="dropdown mb-2 flex">
                   {state ? (
                     <>
-                      <div
-                        style={{ marginRight: "10px" }}
-                        onClick={deleteProject}
-                      >
-                        <div>
-                          <i class="dripicons-trash font-size-15"></i>
+                      {/* delete project */}
+                      {deleteLoading ? (
+                        <ThreeDots
+                          height="20"
+                          width="20"
+                          radius="9"
+                          color="gray"
+                          ariaLabel="three-dots-loading"
+                          wrapperStyle={{marginRight: "15px"}}
+                          wrapperClassName=""
+                          visible={true}
+                        />
+                      ) : (
+                        <div
+                          style={{ marginRight: "10px" }}
+                          onClick={deleteProject}
+                        >
+                          <div>
+                            <i class="dripicons-trash font-size-15"></i>
+                          </div>
                         </div>
-                      </div>
+                      )}
+
                       <NavLink
                         to={`/dashboard/editproject/${projects.uid}/${projects._id}`}
                       >

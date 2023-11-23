@@ -17,6 +17,7 @@ function UserProjectPage() {
   // project comment
   const [comment_description, setProjectDescription] = useState("");
   const [commentState, setCommentState] = useState(false);
+  const [submitCommentState, setSubmitCommentState] = useState(false);
   const [commentData, setCommentData] = useState([]);
 
   // fetch project details
@@ -48,7 +49,7 @@ function UserProjectPage() {
         console.log(result);
       }
     })();
-  }, []);
+  }, [submitCommentState]);
 
   // submit comment form
   async function sumbitComment() {
@@ -57,6 +58,7 @@ function UserProjectPage() {
     if (data != null && data.success) {
       console.log(data);
       setProjectDescription("");
+      setSubmitCommentState(!submitCommentState);
     } else {
       console.log(result);
     }
