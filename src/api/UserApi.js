@@ -125,3 +125,27 @@ export const followUser = async ({ follower_id, uid }) => {
     .then((res) => res)
     .catch((err) => err);
 };
+
+// get followers of user API
+export const getFollowers = async (uid) => {
+  const token = localStorage.getItem("token");
+
+  return await axios
+    .get(`${baseURL}/getfollowers/${uid}`, {
+      headers: { Authorization: token },
+    })
+    .then((res) => res)
+    .catch((err) => err);
+};
+
+// get following of user API
+export const getFollowing = async (uid) => {
+  const token = localStorage.getItem("token");
+
+  return await axios
+    .get(`${baseURL}/getfollowing/${uid}`, {
+      headers: { Authorization: token },
+    })
+    .then((res) => res)
+    .catch((err) => err);
+};

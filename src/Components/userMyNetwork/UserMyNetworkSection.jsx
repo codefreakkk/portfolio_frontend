@@ -57,7 +57,7 @@ function UserMyNetworkSection() {
               {/* Route body */}
               <div>
                 <Routes>
-                  <Route path="/peers" element={<PeersComponent />} />
+                  {/* <Route path="/peers" element={<PeersComponent />} /> */}
                   <Route path="/followers" element={<FollowerComponent />} />
                   <Route path="/following" element={<FollowingComponent />} />
                 </Routes>
