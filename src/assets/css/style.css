@@ -75,6 +75,11 @@
   display: flex;
 }
 
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -215,7 +220,7 @@
   background-color: white;
   height: 100vh;
   padding: 20px 20px;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
 }
 
 .font-weight-600 {
@@ -344,4 +349,9 @@ font-size-12 {
   /* background-color: red; */
   display: flex;
   justify-content: flex-end;
+}
+
+.search-user-input {
+  border-radius: 50px;
+  border: 1px solid gray;
 }

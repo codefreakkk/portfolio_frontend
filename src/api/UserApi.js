@@ -165,12 +165,30 @@ export const getUserName = async (uname) => {
 // update profile picture
 export const updateProfileImage = async (payload) => {
   const token = localStorage.getItem("token");
+
   return axios({
     method: "put",
     url: `${baseURL}/updateprofileimage`,
     headers: { "Content-Type": "multipart/form-data", Authorization: token },
     data: payload,
   })
+    .then((res) => res)
+    .catch((err) => err);
+};
+
+export const getUsersSearch = async ({ u_name, u_company_name, uid }) => {
+  const token = localStorage.getItem("token");
+
+  return await axios
+    .post(
+      `${baseURL}/searchallusers`,
+      { u_name, u_company_name, uid },
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    )
     .then((res) => res)
     .catch((err) => err);
 };

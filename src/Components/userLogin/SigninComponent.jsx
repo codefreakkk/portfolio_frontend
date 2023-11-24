@@ -26,7 +26,7 @@ function SigninComponent() {
       navigate("/dashboard/home");
     } else {
       if (res.data != null) {
-        console.log(res.data.message);
+        alert(res.data.message)
       }
     }
   }
@@ -121,9 +121,9 @@ function SigninComponent() {
                     </div>
 
                     <div class="mt-4 text-center">
-                      <a href="auth-recoverpw.html" class="text-muted">
+                      {/* <a href="auth-recoverpw.html" class="text-muted">
                         <i class="mdi mdi-lock me-1"></i> Forgot your password?
-                      </a>
+                      </a> */}
                     </div>
                   </form>
                 </div>

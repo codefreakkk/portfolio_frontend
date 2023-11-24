@@ -1,13 +1,16 @@
 import React from "react";
-import SkillSetComponent from "../userDashboard/UserSkillSetComponent";
-import profile from "../../assets/images/profile.jpeg";
+import SkillSetComponent from "../../../Components/userDashboard/UserSkillSetComponent";
+import profile from "../../../assets/images/profile.jpeg";
 
 function UserDescriptionCard({ user }) {
   return (
     <div class="mb-4 input-border">
       <div>
         <div class="row">
-          <div class="col-lg-9 col-sm-8">
+          <div class="col-lg-3 col-sm-4 align-self-center ml-30">
+            <img src={user.u_image} alt="" className="profile-container" />
+          </div>
+          <div class="col-lg-8 col-sm-8 description-container">
             <div class="p-4">
               <h3 class="text-primary">{user.full_name}</h3>
               <p>{user.u_description}</p>
@@ -30,7 +33,6 @@ function UserDescriptionCard({ user }) {
                 </span>
                 {user.u_city}, {user.u_country}
               </div>
-
               <div className="description-bottom">
                 <span>
                   <i
@@ -48,9 +50,6 @@ function UserDescriptionCard({ user }) {
                 <span>{user.u_work_experience} Yrs</span>
               </div>
             </div>
-          </div>
-          <div class="col-lg-3 col-sm-4 align-self-center">
-            <img src={user.u_image} alt="" className="profile-container" />
           </div>
         </div>
       </div>

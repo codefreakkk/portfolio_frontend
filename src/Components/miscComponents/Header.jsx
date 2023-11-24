@@ -1,5 +1,6 @@
 import React from "react";
-import avtar from "../../assets/images/users/avatar-1.jpg";
+import avtar from "../../assets/icons/logout.png";
+import logo from "../../assets/homePageAssets/hexagon.png"
 import { NavLink, useNavigate } from "react-router-dom";
 
 function Header() {
@@ -12,8 +13,9 @@ function Header() {
             <NavLink to="/">
               <div class="navbar-brand-box">
                 <a class="logo logo-light">
-                  <span class="logo-sm">PeerList</span>
+                  <span class="logo-sm">E-Portfolio</span>
                   <span class="logo-lg font_size_20px color-white">
+                    <span><img src={logo} alt="" height="30" className="mr-5"/></span>
                     E-Portfolio
                   </span>
                 </a>
@@ -29,7 +31,7 @@ function Header() {
               <i class="fa fa-fw fa-bars"></i>
             </button>
 
-            <form class="app-search d-none d-lg-block">
+            {/* <form class="app-search d-none d-lg-block">
               <div class="position-relative">
                 <input
                   type="text"
@@ -38,16 +40,16 @@ function Header() {
                 />
                 <span class="bx bx-search-alt"></span>
               </div>
-            </form>
+            </form> */}
           </div>
 
           <div class="d-flex">
             <div class="dropdown d-inline-block">
-              {/* <img
-                class="rounded-circle header-profile-user mr-5"
+              <img
                 src={avtar}
+                height="30"
                 alt="Header Avatar"
-              /> */}
+              />
               <span
                 class="d-none pointer d-xl-inline-block ms-1 color-white font-weight-500"
                 key="t-henry"

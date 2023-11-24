@@ -1,6 +1,14 @@
 import React from "react";
 
-function UserProjectSearchBar() {
+function UserProjectSearchBar({
+  projectName,
+  setProjectName,
+  projectDomain,
+  setProjectDomain,
+  submitSearch,
+  resetState,
+  setResetState,
+}) {
   return (
     <>
       <div className="flex mb-2 project-searchbar-container">
@@ -11,6 +19,8 @@ function UserProjectSearchBar() {
               type="text"
               placeholder="Project Title"
               id="example-text-input"
+              value={projectName}
+              onChange={(e) => setProjectName(e.target.value)}
             />
           </div>
         </div>
@@ -22,12 +32,27 @@ function UserProjectSearchBar() {
               type="text"
               placeholder="Domain of Project"
               id="example-text-input"
+              value={projectDomain}
+              onChange={(e) => setProjectDomain(e.target.value)}
             />
           </div>
         </div>
         <div>
-          <button type="submit" class="btn btn-primary w-md">
+          <button
+            type="submit"
+            class="btn btn-primary w-md mr-5"
+            onClick={submitSearch}
+          >
             Search
+          </button>
+        </div>
+        <div>
+          <button
+            type="submit"
+            class="btn btn-danger w-md"
+            onClick={() => setResetState(!resetState)}
+          >
+            Reset
           </button>
         </div>
       </div>

@@ -120,11 +120,11 @@ function UserProjectPage() {
                   </div>
                 </div>
 
-                <div class="my-5">
+                <div class="my-5 flex center">
                   <img
-                    src={image}
-                    alt=""
-                    style={{ height: "50vh" }}
+                    src={data.image}
+                    alt="Image here"
+                    style={{ height: "30vh", width: "30vh" }}
                     class="img-thumbnail d-block"
                   />
                 </div>

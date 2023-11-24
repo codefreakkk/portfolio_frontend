@@ -1,24 +1,37 @@
 import React, { useState, useEffect } from "react";
 import UserSearchCard from "./UserSearchCard";
 import UserSearchBar from "./UserSearchBar";
-import user from "../../assets/images/users/avatar-1.jpg";
-import { getAllUsersPagination } from "../../api/UserApi";
+import { getAllUsersPagination, getUsersSearch } from "../../api/UserApi";
+import { useNavigate } from "react-router-dom";
 
 function UserSearchSection() {
+  const navigate = useNavigate();
+
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
   const [data, setData] = useState([]);
   const [state, setState] = useState(false);
+  const [message, setMessage] = useState(false);
 
-  // follow button atestates
+  // follow button states
   const [followState, setFollowState] = useState(false);
 
-  // grap user id
+  // usearch search bar state
+  const [u_name, setUname] = useState("");
+  const [u_company_name, setCompany] = useState("");
+  const [resetState, setResetState] = useState(false);
+
+  // grab user id
   const uid = localStorage.getItem("uid");
 
   useEffect(() => {
+    setState(false);
+    setMessage(false);
+    setUname("");
+    setCompany("");
+
     (async () => {
-      const result = await getAllUsersPagination({uid, page});
+      const result = await getAllUsersPagination({ uid, page });
       const data = result.data;
       if (data != null && data.success) {
         setPageCount(data.pageCount);
@@ -26,13 +39,44 @@ function UserSearchSection() {
         setState(true);
       }
     })();
-  }, [page, followState]);
+  }, [page, followState, resetState]);
+
+  // search function
+  async function submitSearchForm() {
+    setState(false);
+    setMessage(false);
+
+    const result = await getUsersSearch({ u_name, u_company_name, uid });
+    const data = result.data;
+    if (data != null && data.success) {
+      setPageCount(1);
+      setData(data.data);
+      setState(true);
+      console.log(data.data);
+
+      if (data.data.length == 0) {
+        setMessage(true);
+      }
+    } else {
+      alert("Some error occured while searching");
+      localStorage.clear();
+      navigate("/");
+    }
+  }
 
   return (
     <>
       <div className="user-project-container">
         <h5 className="title-border">Search</h5>
-        <UserSearchBar />
+        <UserSearchBar
+          u_name={u_name}
+          setUname={setUname}
+          u_company_name={u_company_name}
+          setCompany={setCompany}
+          submitSearchForm={submitSearchForm}
+          resetState={resetState}
+          setResetState={setResetState}
+        />
 
         {/* Pagination starts */}
         <div class="pagination-container">
@@ -88,6 +132,7 @@ function UserSearchSection() {
         {/* Pagination ends */}
 
         <div className="row user-search-container">
+          {message ? "No users to show" : ""}
           {state
             ? data.map((result, index) => {
                 if (result._id == localStorage.getItem("uid")) {

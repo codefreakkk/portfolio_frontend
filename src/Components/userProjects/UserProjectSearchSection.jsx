@@ -1,15 +1,29 @@
 import React, { useEffect, useState } from "react";
 import UserProjectSearchBar from "./UserProjectSearchBar";
 import UserProjectCard from "./UserProjectCard";
-import { getProjectPagination } from "../../api/projectApi";
+import { getProjectPagination, getProjectSearch } from "../../api/projectApi";
+import { useNavigate } from "react-router-dom";
 
 function UserProjectSearchSection() {
+  const navigate = useNavigate();
+
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
   const [data, setData] = useState([]);
   const [state, setState] = useState(false);
+  const [message, setMessage] = useState(false);
+
+  // search bar states
+  const [projectName, setProjectName] = useState("");
+  const [projectDomain, setProjectDomain] = useState("");
+  const [resetState, setResetState] = useState(false);
 
   useEffect(() => {
+    setState(false);
+    setMessage(false);
+    setProjectName("");
+    setProjectDomain("");
+
     (async () => {
       const result = await getProjectPagination(page);
       const data = result.data;
@@ -19,13 +33,46 @@ function UserProjectSearchSection() {
         setState(true);
       }
     })();
-  }, [page]);
+  }, [page, resetState]);
+
+  async function submitSearch() {
+    setState(false);
+    setMessage(false);
+
+    // get project
+    const result = await getProjectSearch({
+      project_name: projectName,
+      project_domain: projectDomain,
+    });
+    const data = result.data;
+    if (data != null && data.success) {
+      setData(data.data);
+      setState(true);
+      setPageCount(1);
+
+      if (data.data.length == 0) {
+        setMessage(true);
+      }
+    } else {
+      alert("Some error occured");
+      localStorage.clear();
+      navigate("/");
+    }
+  }
 
   return (
     <>
       <div className="user-project-container">
         <h5 className="mb-4">Projects</h5>
-        <UserProjectSearchBar />
+        <UserProjectSearchBar
+          projectName={projectName}
+          setProjectName={setProjectName}
+          projectDomain={projectDomain}
+          setProjectDomain={setProjectDomain}
+          submitSearch={submitSearch}
+          resetState={resetState}
+          setResetState={setResetState}
+        />
 
         {/* Pagination start */}
         <div class="pagination-container">
@@ -80,6 +127,7 @@ function UserProjectSearchSection() {
         {/* Pagination end */}
         <div>
           <div className="row user-project-container-inner">
+            {message ? "No projects to show" : ""}
             {state
               ? data.map((result, index) => {
                   return (

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MainTheme_theme1 from "../../themes/theme1/MainTheme_theme1";
+import MainTheme_theme2 from "../../themes/theme2/MainTheme_theme2";
 import { useNavigate, useParams } from "react-router-dom";
 import { getUserName } from "../../api/UserApi";
 
@@ -25,10 +26,16 @@ function PortfolioPage() {
     })();
   }, []);
 
-  if (userTheme == 1 && userState == true) {
+  if (userState == true && userTheme == 1 ) {
     return <MainTheme_theme1 />;
-  } else {
-    navigate("/");
+  } 
+  else if (userState == true && userTheme == 2) {
+    return <MainTheme_theme2/>
+  }
+  else {
+    return (
+      <div className="flex center mt-5">Loading</div>
+    )
   }
 }
 

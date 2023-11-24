@@ -34,7 +34,7 @@ function HomeNavbar() {
                 className="btn btn-primary"
                 onClick={() => {
                   localStorage.clear();
-                  navigate("/");
+                  window.location.href = "/"
                 }}
               >
                 Logout

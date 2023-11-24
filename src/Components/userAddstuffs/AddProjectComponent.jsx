@@ -10,6 +10,13 @@ function AddProjectComponent() {
   const [project_url, setProjectUrl] = useState("");
   const [description, setDescription] = useState("");
   const [project_domain, setProjectDomain] = useState("");
+  const [file, setFile] = useState(null);
+
+  function toggleFile(e) {
+    e.preventDefault();
+    setFile(e.target.files[0]);
+  }
+
 
   function checkFormEmpty() {
     if (
@@ -18,7 +25,8 @@ function AddProjectComponent() {
       !github_repo ||
       !project_url ||
       !description ||
-      !project_domain
+      !project_domain || 
+      !file
     ) {
       return true;
     }
@@ -37,10 +45,10 @@ function AddProjectComponent() {
       project_name,
       project_domain,
       tagline,
-      image,
       github_repo,
       project_url,
       description,
+      image: file
     };
     const result = await addProject(payload);
     const data = result.data;
@@ -54,7 +62,7 @@ function AddProjectComponent() {
       setDescription("");
       setProjectDomain("");
     } else {
-      alert(result.data.message);
+      alert("Some error occured");
     }
   }
 
@@ -118,6 +126,7 @@ function AddProjectComponent() {
                         </label>
                         <input
                           type="file"
+                          onChange={toggleFile}
                           class="form-control input-border"
                           id="resume"
                         />

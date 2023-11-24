@@ -4,9 +4,11 @@ import { baseURL } from "./config";
 export const addProject = async (payload) => {
   const token = localStorage.getItem("token");
 
-  return await axios
-    .post(`${baseURL}/addproject`, payload, {
-      headers: { Authorization: token },
+  return await axios({
+      method: "post",
+      url: `${baseURL}/addproject`,
+      headers: { "Content-Type": "multipart/form-data", Authorization: token },
+      data: payload,
     })
     .then((res) => res)
     .catch((err) => err);
@@ -32,7 +34,7 @@ export const getAllProjectsByUserId = async (uid) => {
     .get(`${baseURL}/getallprojectsbyuserid/${uid}`)
     .then((res) => res)
     .catch((err) => err);
-}
+};
 
 // pagination
 export const getProjectPagination = async (page) => {
@@ -44,6 +46,24 @@ export const getProjectPagination = async (page) => {
         Authorization: token,
       },
     })
+    .then((res) => res)
+    .catch((err) => err);
+};
+
+// project search pagination
+export const getProjectSearch = async ({ project_name, project_domain }) => {
+  const token = localStorage.getItem("token");
+
+  return await axios
+    .post(
+      `${baseURL}/searchallprojects`,
+      { project_name, project_domain },
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    )
     .then((res) => res)
     .catch((err) => err);
 };
@@ -96,5 +116,3 @@ export const deleteProjectById = async (pid) => {
     headers: { Authorization: token },
   });
 };
-
-
