@@ -5,6 +5,7 @@ import UserGithubChartSection from "./UserGithubChartSection";
 import UserProjectSection from "./UserProjectSection";
 import UserLinkSection from "./UserLinkSection";
 import { getUser } from "../../api/UserApi";
+import { ThreeDots } from "react-loader-spinner";
 
 function UserDashborad() {
   // user state
@@ -30,7 +31,22 @@ function UserDashborad() {
   return (
     <>
       <div className="user-dashboard-container">
-        {userState ? <UserDescriptionCard user={user} /> : <div>Loading</div>}
+        {userState ? (
+          <UserDescriptionCard user={user} />
+        ) : (
+          <div>
+            <ThreeDots
+              height="30"
+              width="30"
+              radius="9"
+              color="gray"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true}
+            />
+          </div>
+        )}
         <UserShowcaseSection />
         <UserGithubChartSection />
         <UserProjectSection />
@@ -43,7 +59,18 @@ function UserDashborad() {
             li={user.linkedin}
           />
         ) : (
-          <div>Loading</div>
+          <div>
+            <ThreeDots
+              height="30"
+              width="30"
+              radius="9"
+              color="gray"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true}
+            />
+          </div>
         )}
       </div>
     </>

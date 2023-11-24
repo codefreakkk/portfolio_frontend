@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import UserProjectCard from "../userProjects/UserProjectCard";
 import { getProject } from "../../api/projectApi";
+import { ThreeDots } from "react-loader-spinner";
 
 function UserProjectSection() {
   // project state
@@ -30,24 +31,37 @@ function UserProjectSection() {
         <h6 className="mb-3">My Projects : </h6>
         <div className="row">
           {/* <UserProjectCard /> */}
-          {projects.length == 0 ? (
+          {projectState && projects.length == 0 ? (
             <div className="mb-4">No Projects to show</div>
           ) : (
             ""
           )}
-          {projectState
-            ? projects.map((result, index) => {
-                return (
-                  <UserProjectCard
-                    key={index}
-                    projects={result}
-                    state={true}
-                    deleteState={deleteState}
-                    setDeleteState={setDeleteState}
-                  />
-                );
-              })
-            : ""}
+          {projectState ? (
+            projects.map((result, index) => {
+              return (
+                <UserProjectCard
+                  key={index}
+                  projects={result}
+                  state={true}
+                  deleteState={deleteState}
+                  setDeleteState={setDeleteState}
+                />
+              );
+            })
+          ) : (
+            <div>
+              <ThreeDots
+                height="30"
+                width="30"
+                radius="9"
+                color="gray"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClassName=""
+                visible={true}
+              />
+            </div>
+          )}
         </div>
       </div>
     </>
