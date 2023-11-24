@@ -3,7 +3,10 @@ import StuffHeader from "./StuffHeader";
 import { NavLink, Routes, Route } from "react-router-dom";
 import ProfileForm from "./ProfileForm";
 import AccountForm from "./AccountForm";
+
 function AddPersonalDetails() {
+
+
   return (
     <>
       <div class="row" style={{ width: "80%" }}>

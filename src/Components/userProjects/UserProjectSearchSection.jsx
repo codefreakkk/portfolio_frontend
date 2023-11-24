@@ -3,9 +3,15 @@ import UserProjectSearchBar from "./UserProjectSearchBar";
 import UserProjectCard from "./UserProjectCard";
 import { getProjectPagination, getProjectSearch } from "../../api/projectApi";
 import { useNavigate } from "react-router-dom";
+import { ThreeDots } from "react-loader-spinner";
+
+// toast
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function UserProjectSearchSection() {
   const navigate = useNavigate();
+  const notify = (msg) => toast(msg);
 
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
@@ -54,7 +60,7 @@ function UserProjectSearchSection() {
         setMessage(true);
       }
     } else {
-      alert("Some error occured");
+      notify("Some error occured");
       localStorage.clear();
       navigate("/");
     }
@@ -63,6 +69,18 @@ function UserProjectSearchSection() {
   return (
     <>
       <div className="user-project-container">
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <h5 className="mb-4">Projects</h5>
         <UserProjectSearchBar
           projectName={projectName}
@@ -127,18 +145,35 @@ function UserProjectSearchSection() {
         {/* Pagination end */}
         <div>
           <div className="row user-project-container-inner">
-            {message ? "No projects to show" : ""}
-            {state
-              ? data.map((result, index) => {
-                  return (
-                    <UserProjectCard
-                      key={index}
-                      projects={result}
-                      state={false}
-                    />
+            {message ? (
+              <div className="flex center">No projects to show</div>
+            ) : (
+              ""
+            )}
+            {state ? (
+              data.map((result, index) => {
+                return (
+                  <UserProjectCard
+                    key={index}
+                    projects={result}
+                    state={false}
+                  />
                   );
                 })
-              : "Loading"}
+            ) : (
+              <div className="flex center">
+                <ThreeDots
+                  height="30"
+                  width="30"
+                  radius="9"
+                  color="gray"
+                  ariaLabel="three-dots-loading"
+                  wrapperStyle={{}}
+                  wrapperClassName=""
+                  visible={true}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

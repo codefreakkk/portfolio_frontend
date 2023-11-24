@@ -4,8 +4,13 @@ import logo from "../../assets/homePageAssets/hexagon.png";
 import background from "../../assets/images/profile-img.png";
 import { LoginUser } from "../../api/AuthApi";
 
+// toast
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function SigninComponent() {
   const navigate = useNavigate();
+  const notify = (msg) => toast(msg);
 
   const [userCred, setUserCred] = useState({
     u_name: "",
@@ -26,7 +31,7 @@ function SigninComponent() {
       navigate("/dashboard/home");
     } else {
       if (res.data != null) {
-        alert(res.data.message)
+        notify(res.data.message);
       }
     }
   }
@@ -36,6 +41,20 @@ function SigninComponent() {
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8 col-lg-6 col-xl-5">
+            {/* alert start */}
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
+            {/* alert end */}
             <div class="card overflow-hidden">
               <div class="bg-primary bg-soft">
                 <div class="row">

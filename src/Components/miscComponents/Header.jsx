@@ -13,10 +13,10 @@ function Header() {
             <NavLink to="/">
               <div class="navbar-brand-box">
                 <a class="logo logo-light">
-                  <span class="logo-sm">E-Portfolio</span>
+                  <span class="logo-sm">Dev's Info</span>
                   <span class="logo-lg font_size_20px color-white">
                     <span><img src={logo} alt="" height="30" className="mr-5"/></span>
-                    E-Portfolio
+                    Dev's Info
                   </span>
                 </a>
               </div>

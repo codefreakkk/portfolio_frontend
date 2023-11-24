@@ -17,6 +17,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* background-color: #00aa45; */
+  /* height: 80vh; */
 }
 
 .right-side {
@@ -160,6 +162,7 @@
 
 .footer-container {
   font-size: 12px;
+  /* margin-top: 35vh; */
 }
 
 .font-weight-500 {

@@ -3,6 +3,7 @@ import UserSearchCard from "./UserSearchCard";
 import UserSearchBar from "./UserSearchBar";
 import { getAllUsersPagination, getUsersSearch } from "../../api/UserApi";
 import { useNavigate } from "react-router-dom";
+import { ThreeDots } from "react-loader-spinner";
 
 function UserSearchSection() {
   const navigate = useNavigate();
@@ -132,25 +133,38 @@ function UserSearchSection() {
         {/* Pagination ends */}
 
         <div className="row user-search-container">
-          {message ? "No users to show" : ""}
-          {state
-            ? data.map((result, index) => {
-                if (result._id == localStorage.getItem("uid")) {
-                  return;
-                }
-                return (
-                  <UserSearchCard
-                    key={index}
-                    uid={result._id}
-                    name={result.u_name}
-                    description={result.u_description}
-                    followState={followState}
-                    setFollowState={setFollowState}
-                    image={result.u_image}
-                  />
-                );
-              })
-            : "Loading"}
+          {message ? <div className="flex center">No users to show</div> : ""}
+          {state ? (
+            data.map((result, index) => {
+              if (result._id == localStorage.getItem("uid")) {
+                return;
+              }
+              return (
+                <UserSearchCard
+                  key={index}
+                  uid={result._id}
+                  name={result.u_name}
+                  description={result.u_description}
+                  followState={followState}
+                  setFollowState={setFollowState}
+                  image={result.u_image}
+                />
+              );
+            })
+          ) : (
+            <div className="flex center">
+              <ThreeDots
+                height="30"
+                width="30"
+                radius="9"
+                color="gray"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClassName=""
+                visible={true}
+              />
+            </div>
+          )}
         </div>
       </div>
     </>

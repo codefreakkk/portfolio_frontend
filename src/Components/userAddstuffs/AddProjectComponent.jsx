@@ -2,21 +2,27 @@ import React, { useState } from "react";
 import StuffHeader from "./StuffHeader";
 import { addProject } from "../../api/projectApi";
 
+// toast
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ThreeDots } from "react-loader-spinner";
+
 function AddProjectComponent() {
+  const notify = (msg) => toast(msg);
+
   const [project_name, setProjectName] = useState("");
   const [tagline, setTagline] = useState("");
-  const [image, setImage] = useState("image");
   const [github_repo, setGithubRepo] = useState("");
   const [project_url, setProjectUrl] = useState("");
   const [description, setDescription] = useState("");
   const [project_domain, setProjectDomain] = useState("");
   const [file, setFile] = useState(null);
+  const [buttonState, setButtonState] = useState(false);
 
   function toggleFile(e) {
     e.preventDefault();
     setFile(e.target.files[0]);
   }
-
 
   function checkFormEmpty() {
     if (
@@ -25,7 +31,7 @@ function AddProjectComponent() {
       !github_repo ||
       !project_url ||
       !description ||
-      !project_domain || 
+      !project_domain ||
       !file
     ) {
       return true;
@@ -34,8 +40,11 @@ function AddProjectComponent() {
   }
 
   async function submitForm() {
+    setButtonState(true);
+
     if (checkFormEmpty()) {
-      alert("Please fill all fields");
+      notify("Please fill all fields");
+      setButtonState(false);
       return;
     }
 
@@ -48,21 +57,23 @@ function AddProjectComponent() {
       github_repo,
       project_url,
       description,
-      image: file
+      image: file,
     };
     const result = await addProject(payload);
     const data = result.data;
     if (data != null && data.success) {
-      alert(data.message);
+      notify(data.message);
       setProjectName("");
       setTagline("");
-      setImage("");
+      setFile(null);
       setGithubRepo("");
       setProjectUrl("");
       setDescription("");
       setProjectDomain("");
+      setButtonState(false);
     } else {
-      alert("Some error occured");
+      setButtonState(false);
+      notify("Some error occured");
     }
   }
 
@@ -70,6 +81,18 @@ function AddProjectComponent() {
     <>
       <div class="row" style={{ width: "80%" }}>
         <div class="col-lg-12">
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
           <div class="card">
             <div class="card-body">
               <StuffHeader title={"Add Projects"} url={""} />
@@ -181,15 +204,28 @@ function AddProjectComponent() {
                   </div>
 
                   {/* </div> */}
-                  <div className="">
-                    <input
-                      data-repeater-create
-                      type="button"
-                      class="btn btn-success mt-3 mt-lg-0"
-                      value="Save"
-                      onClick={submitForm}
-                    />
-                  </div>
+                  {buttonState ? (
+                    <ThreeDots 
+                    height="20" 
+                    width="20" 
+                    radius="9"
+                    color="gray" 
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle={{}}
+                    wrapperClassName=""
+                    visible={true}
+                     />
+                  ) : (
+                    <div className="">
+                      <input
+                        data-repeater-create
+                        type="button"
+                        class="btn btn-success mt-3 mt-lg-0"
+                        value="Save"
+                        onClick={submitForm}
+                      />
+                    </div>
+                  )}
                 </form>
               </div>
             </div>

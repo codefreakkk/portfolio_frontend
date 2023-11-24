@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import StuffHeader from "../../Components/userAddstuffs/StuffHeader";
-import image from "../../assets/images/small/img-2.jpg";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ViewProjectCommentsCard from "../../Components/userProjects/ViewProjectCommentsCard";
 import { getProjectByIdAndPid, addLike } from "../../api/projectApi";
 import { addComment, getComment } from "../../api/projectCommentApi";
 
 function UserProjectPage() {
   const { uid, pid } = useParams();
+  const navigate = useNavigate();
 
   // project details
   const [projectState, setProjectState] = useState(false);
@@ -31,7 +31,9 @@ function UserProjectPage() {
         setLike(parseInt(data.data.like));
         console.log(data.data);
       } else {
-        console.log(result.data);
+        alert("Some error occured");
+        localStorage.clear();
+        navigate("/");
       }
     })();
   }, []);
@@ -46,7 +48,9 @@ function UserProjectPage() {
         setCommentState(true);
         console.log(data.data);
       } else {
-        console.log(result);
+        alert("Some error occured")
+        localStorage.clear();
+        navigate("/");
       }
     })();
   }, [submitCommentState]);

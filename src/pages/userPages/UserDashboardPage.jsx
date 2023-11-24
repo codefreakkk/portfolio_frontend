@@ -24,7 +24,7 @@ function UserHomePage() {
       <Panel />
       <div className="main pd-top-15">
         {/* Left side */}
-        <div className="left-side ">
+        <div className="left-side">
           <UserWelcomeBackCard />
           <UserFooter />
         </div>

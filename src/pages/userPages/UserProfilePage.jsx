@@ -5,11 +5,13 @@ import UserProjectSection from "../../Components/UserProfilePageComponents/UserP
 import UserLinkSection from "../../Components/UserProfilePageComponents/UserLinkSection";
 import UserPageHeader from "../../Components/userProfilePage/UserPageHeader";
 import back from "../../assets/icons/back.png";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getUser } from "../../api/UserApi";
 
 function UserPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const [userState, setUserState] = useState(false);
   const [user, setUser] = useState(null);
 
@@ -21,11 +23,11 @@ function UserPage() {
       if (data != null && data.success === true) {
         setUser(data.data);
         setUserState(true);
-        console.log(data.data);
       } else {
         // navigate to home later while fixing bug
-        console.log(result);
         alert("Some error occured while fetching user data");
+        localStorage.clear();
+        navigate("/")
       }
     })();
   }, []);

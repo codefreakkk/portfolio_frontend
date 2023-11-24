@@ -4,9 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { updateProfileImage } from "../../api/UserApi";
 import { ThreeDots } from "react-loader-spinner";
 
+// toast
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // need to worl on this section
 function ProfileForm() {
   const navigate = useNavigate();
+  const notify = (msg) => toast(msg);
+
   const [full_name, setFullName] = useState("");
   const [u_email, setEmail] = useState("");
   const [u_contact, setContact] = useState("");
@@ -24,6 +30,7 @@ function ProfileForm() {
   const [u_resume, setResume] = useState("");
   const [file, setFile] = useState(null);
   const [fileState, setFileState] = useState(false);
+  const [buttonState, setButtonState] = useState(false);
 
   // get user id
   const uid = localStorage.getItem("uid");
@@ -50,9 +57,7 @@ function ProfileForm() {
         setSkillsArray(user.skills);
         setResume(user.u_resume);
       } else {
-        alert("Some error occured while fetching data");
-        localStorage.clear();
-        navigate("/");
+        notify("Some error occured");
       }
     })();
   }, []);
@@ -91,10 +96,11 @@ function ProfileForm() {
 
   async function submitForm() {
     console.log("Submitting Form");
+    setButtonState(true);
 
     // post data
     if (checkEmptyFields()) {
-      alert("Please fill all fields");
+      notify("Please fill all fields");
       return;
     }
     const result = await addPersonalDetails({
@@ -115,9 +121,11 @@ function ProfileForm() {
 
     const data = result.data;
     if (data != null && data.success) {
-      alert(data.message);
+      notify(data.message);
+      setButtonState(false);
     } else {
-      alert("Some error occured");
+      setButtonState(false);
+      notify("Some error occured");
     }
   }
 
@@ -128,8 +136,9 @@ function ProfileForm() {
 
   async function submitProfilePicture() {
     setFileState(true);
+
     if (file === null) {
-      alert("Please select file first");
+      notify("Please select file first");
       setFileState(false);
       return;
     }
@@ -140,17 +149,31 @@ function ProfileForm() {
     if (data != null && data.success) {
       console.log(data);
       setFileState(false);
-      alert(data.message);
+      notify(data.message);
     } else {
       console.log(result);
       setFileState(false);
-      alert("Profile Image not updated");
+      notify("Profile Image not updated");
     }
   }
 
   return (
     <>
       <div class="col-xl-12">
+        {/* alert start */}
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+        {/* alert end */}
         <div className="mb-3"></div>
         <form>
           <div class="row">
@@ -411,7 +434,7 @@ function ProfileForm() {
 
             <div className="mb-3">
               <label for="formrow-email-input" class="form-label">
-                Skill Set
+                Profile Picture
               </label>
               <div class="flex">
                 <div class="mr-10" style={{ width: "100%" }}>
@@ -450,15 +473,28 @@ function ProfileForm() {
           </div>
 
           {/* </div> */}
-          <div className="">
-            <input
-              data-repeater-create
-              type="button"
-              class="btn btn-success mt-3 mt-lg-0"
-              value="Save"
-              onClick={submitForm}
+          {buttonState ? (
+            <ThreeDots
+              height="20"
+              width="20"
+              radius="9"
+              color="gray"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true}
             />
-          </div>
+          ) : (
+            <div className="">
+              <input
+                data-repeater-create
+                type="button"
+                class="btn btn-success mt-3 mt-lg-0"
+                value="Save"
+                onClick={submitForm}
+              />
+            </div>
+          )}
         </form>
       </div>
     </>

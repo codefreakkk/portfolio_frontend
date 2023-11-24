@@ -4,33 +4,55 @@ import background from "../../assets/images/profile-img.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import { signUp } from "../../api/UserApi";
 
+// toast
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function SignupComponent() {
   const navigate = useNavigate();
-  
+  const notify = (msg) => toast(msg);
+
   const [u_name, setUname] = useState("");
   const [u_password, setPassword] = useState("");
   const [u_cpassword, setCPassword] = useState("");
 
   async function submitForm() {
     if (!u_name || !u_password || !u_cpassword) {
-      alert("Please fill all fields");
+      notify("Please fill all fields");
       return;
     }
     if (u_password != u_cpassword) {
-      alert("Password does not match");
+      notify("Password does not match");
       return;
     }
     const result = await signUp({ u_name, u_password });
     const data = result.data;
     if (data != null && data.success) {
-      navigate("/login")
+      navigate("/login");
     } else {
-      console.log(result.data);
+      if (result != null) {
+        notify(result.data.message);
+      } else {
+        notify("Some server error occured");
+      }
     }
   }
 
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {/*  */}
       <div class="account-pages my-5 pt-sm-5">
         <div class="container">
           <div class="row justify-content-center">

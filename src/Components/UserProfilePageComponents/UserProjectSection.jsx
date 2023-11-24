@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import UserProjectCard from "../userProjects/UserProjectCard";
 import { getProject } from "../../api/projectApi";
+import { useNavigate } from "react-router-dom";
 
 function UserProjectSection({uid}) {
   // project state
+  const  navigate = useNavigate();
   const [projectState, setProjectState] = useState(false);
   const [projects, setProject] = useState([]);
   const [deleteState, setDeleteState] = useState(false);
@@ -19,6 +21,8 @@ function UserProjectSection({uid}) {
       } else {
         // navigate to home later while fixing bug
         alert("Some error occured while fetching projects");
+        localStorage.clear();
+        navigate("/");
       }
     })();
   }, [deleteState]);
@@ -30,7 +34,7 @@ function UserProjectSection({uid}) {
         <div className="row">
           {/* <UserProjectCard /> */}
           {projects.length == 0 ? (
-            <div className="mb-4">No Projects to show</div>
+            <div className="mb-4 flex center">No Projects to show</div>
           ) : (
             ""
           )}

@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { updateAccountDetails, getUserAccountDetails } from "../../api/UserApi";
 
+// toast
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ThreeDots } from "react-loader-spinner";
+
 function AccountForm() {
+  const notify = (msg) => toast(msg);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
+  const [buttonState, setButtonState] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -17,9 +25,9 @@ function AccountForm() {
         setCPassword(user.u_password);
       } else {
         if (data !== undefined) {
-          console.log(data.message);
+          notify(data.message);
         } else {
-          alert("Some error ocurred");
+          notify("Some error ocurred");
         }
       }
     })();
@@ -35,14 +43,18 @@ function AccountForm() {
   }
 
   async function submitForm() {
+    setButtonState(true);
+
     // check empty fields
     if (checkEmptyFields()) {
-      alert("Please fill all fields");
+      notify("Please fill all fields");
+      setButtonState(false);
       return;
     }
     // check if password matches
     if (password != cpassword) {
-      alert("Password does not match");
+      notify("Password does not match");
+      setButtonState(false);
       return;
     }
 
@@ -53,15 +65,35 @@ function AccountForm() {
     });
     const data = result.data;
     if (data != null && data.success) {
-      console.log(data);
+      notify(data.message);
+      setButtonState(false);
     } else {
-      console.log(data);
+      if (result) {
+        notify(result.data.message);
+      } else {
+        notify("Some error occured while updating");
+      }
+      setButtonState(false);
     }
   }
 
   return (
     <>
       <div class="col-xl-12">
+        {/* alert start */}
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+        {/* alert end */}
         <div className="mb-3"></div>
         <form>
           <div class="mb-3">
@@ -111,15 +143,28 @@ function AccountForm() {
             </div>
           </div>
 
-          <div className="">
-            <input
-              data-repeater-create
-              type="button"
-              class="btn btn-success mt-3 mt-lg-0"
-              value="Save"
-              onClick={submitForm}
+          {buttonState ? (
+            <ThreeDots
+              height="20"
+              width="20"
+              radius="9"
+              color="gray"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true}
             />
-          </div>
+          ) : (
+            <div className="">
+              <input
+                data-repeater-create
+                type="button"
+                class="btn btn-success mt-3 mt-lg-0"
+                value="Save"
+                onClick={submitForm}
+              />
+            </div>
+          )}
         </form>
       </div>
     </>

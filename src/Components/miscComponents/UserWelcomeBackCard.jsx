@@ -5,6 +5,7 @@ import logo from "../../assets/images/profile-img.png";
 import profile from "../../assets/icons/profile.png";
 import { getFollowers } from "../../api/UserApi";
 import { getProject } from "../../api/projectApi";
+import { NavLink } from "react-router-dom";
 
 function UserWelcomeBackCard() {
   const uid = localStorage.getItem("uid");
@@ -73,6 +74,15 @@ function UserWelcomeBackCard() {
                   <p class="text-muted mb-0">Followers</p>
                 </div>
               </div>
+            </div>
+            <div class="mt-4">
+              <NavLink to={`/${localStorage.getItem("u_name")}`}>
+              <span
+                class="btn btn-primary waves-effect waves-light btn-sm"
+                >
+                View Profile <i class="mdi mdi-arrow-right ms-1"></i>
+              </span>
+                </NavLink>
             </div>
           </div>
         </div>

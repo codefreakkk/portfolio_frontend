@@ -1,7 +1,12 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { followUser } from "../../api/UserApi";
 import { ThreeDots } from "react-loader-spinner";
+
+// toast
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// import { ThreeDots } from "react-loader-spinner";
 
 function UserSearchCard({
   uid,
@@ -9,9 +14,11 @@ function UserSearchCard({
   description,
   followState,
   setFollowState,
-  image
+  image,
 }) {
   const [followLoadingState, setFollowLoadingState] = useState(false);
+
+  const notify = (msg) => toast(msg);
 
   async function followSubmit() {
     setFollowLoadingState(true);
@@ -23,16 +30,29 @@ function UserSearchCard({
       console.log(data);
       setFollowState(!followState);
       setFollowLoadingState(false);
-      alert(data.message)
+      console.log(data.message);
+      notify(data.message);
     } else {
-      alert(result.response.data.message);
-      console.log(result.response.data.message);
+      notify(result.response.data.message);
     }
   }
 
   return (
     <>
+      
       <div class="col-xl-4 col-sm-6">
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
         <div class="card shadow-none border">
           <div class="card-body p-3">
             <div class="">
@@ -62,7 +82,12 @@ function UserSearchCard({
               <div class="avatar-xs me-3 mb-3">
                 <div class="avatar-title bg-transparent rounded">
                   {/* user image */}
-                  <img src={image} alt="Image here" height="35" className="user-image" />
+                  <img
+                    src={image}
+                    alt="Image here"
+                    height="35"
+                    className="user-image"
+                  />
                 </div>
               </div>
               <div class="d-flex">
