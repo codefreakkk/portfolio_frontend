@@ -192,3 +192,20 @@ export const getUsersSearch = async ({ u_name, u_company_name, uid }) => {
     .then((res) => res)
     .catch((err) => err);
 };
+
+
+// update github
+export const updateGithub = async ({uid, user_name}) => {
+  const token = localStorage.getItem("token");
+
+  return await axios
+    .put(
+      `${baseURL}/updategithub/${uid}`,
+      { user_name },
+      { headers: { Authorization: token } }
+    )
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => err);
+};

@@ -58,6 +58,7 @@ function AddProjectComponent() {
       project_url,
       description,
       image: file,
+      u_name: localStorage.getItem("u_name")
     };
     const result = await addProject(payload);
     const data = result.data;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import UserThemeCard from "./UserThemeCard";
 import { getAllThemes } from "../../api/themeApi";
 import { ThreeDots } from "react-loader-spinner";
+import themeImage1 from "../../assets/themeImages/themeImage1.png"
 
 function UserThemeSection() {
   const [userThemes, setUserThemes] = useState([]);
@@ -36,6 +37,8 @@ function UserThemeSection() {
                   themeNumber == result.theme_no ? "border-primary" : ""
                 }
                 themeName={result.theme_name}
+                themeImage1={themeImage1}
+                themeDescription={result.theme_description}
               />
             );
           })

@@ -48,7 +48,22 @@ function UserDashborad() {
           </div>
         )}
         <UserShowcaseSection />
-        <UserGithubChartSection />
+        {userState ? (
+          <UserGithubChartSection github_user_name={user.github_user_name} />
+        ) : (
+          <div>
+            <ThreeDots
+              height="30"
+              width="30"
+              radius="9"
+              color="gray"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true}
+            />
+          </div>
+        )}
         <UserProjectSection />
 
         {userState ? (

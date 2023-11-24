@@ -33,26 +33,26 @@ function UserSearchCard({
       console.log(data.message);
       notify(data.message);
     } else {
+      setFollowLoadingState(false);
       notify(result.response.data.message);
     }
   }
 
   return (
     <>
-      
       <div class="col-xl-4 col-sm-6">
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <div class="card shadow-none border">
           <div class="card-body p-3">
             <div class="">

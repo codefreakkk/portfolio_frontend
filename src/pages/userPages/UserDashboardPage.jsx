@@ -14,6 +14,7 @@ import AddPersonalDetails from "../../Components/userAddstuffs/AddPersonalDetail
 import UserProjectPage from "./UserProjectPage";
 import UserProfilePage from "./UserProfilePage";
 import UserEditProject from "../../Components/userDashboard/UserEditProject";
+import ConnectGithub from "../../Components/userAddstuffs/ConnectGithub";
 
 
 
@@ -44,6 +45,10 @@ function UserHomePage() {
             <Route
               path="/addpersonaldetails/*"
               element={<AddPersonalDetails />}
+            />
+            <Route
+              path="/connectgithub"
+              element={<ConnectGithub/>}
             />
           </Routes>
         </div>

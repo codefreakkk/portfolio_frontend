@@ -76,7 +76,7 @@ function UserProjectPage() {
 
   return (
     <>
-      NOTE Need to change rendering method (state code) do it later
+      {/* NOTE Need to change rendering method (state code) do it later */}
       <div class="row" style={{ width: "70%" }}>
         <div class="col-lg-12">
           <div class="card pl-5">
@@ -87,14 +87,15 @@ function UserProjectPage() {
                 <div className="view-project-header">
                   <div className="project-left-side">
                     <h5>{data.project_name}</h5>
-                    <span className="description-color font-size-12">
-                      {data.tagline}
+                    <span className="font-size-12">
+                      <b>Tagline</b> - {data.tagline}
                     </span>
                     <div className="font-size-12">
                       <b>Project Domain : </b> {data.project_domain}
                     </div>
                   </div>
                   <div className="project-right-side">
+                    <div className="mb-3">Author : <b>{data.u_name}</b></div>
                     <div className="upvote-button" onClick={addProjectLike}>
                       <div className="upvote-button-leftside">Upvote</div>
                       <div className="upvote-button-rightside">{like}</div>

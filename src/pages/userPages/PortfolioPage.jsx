@@ -18,7 +18,8 @@ function PortfolioPage() {
       if (data != null && data.success) {
         setUserTheme(data.data.u_theme);
         setUserState(true);
-        console.log(data.data);
+        console.log(data.data.u_theme);
+        // alert(data.data)
       } else {
         alert("User not found");
         navigate("/");
@@ -26,16 +27,13 @@ function PortfolioPage() {
     })();
   }, []);
 
-  if (userState == true && userTheme == 1 ) {
+  if (userState == true && userTheme == 1) {
     return <MainTheme_theme1 />;
-  } 
-  else if (userState == true && userTheme == 2) {
-    return <MainTheme_theme2/>
-  }
-  else {
-    return (
-      <div className="flex center mt-5">Loading</div>
-    )
+  } else if (userState == true && userTheme == 2) {
+    console.log("inn");
+    return <MainTheme_theme2 />;
+  } else {
+    return <div className="flex center mt-5">Loading</div>;
   }
 }
 

@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import UserProjectCard from "../userProjects/UserProjectCard";
 import { getProject } from "../../api/projectApi";
 import { useNavigate } from "react-router-dom";
+import { ThreeDots } from "react-loader-spinner";
 
-function UserProjectSection({uid}) {
+function UserProjectSection({ uid }) {
   // project state
-  const  navigate = useNavigate();
+  const navigate = useNavigate();
   const [projectState, setProjectState] = useState(false);
   const [projects, setProject] = useState([]);
   const [deleteState, setDeleteState] = useState(false);
@@ -34,23 +35,36 @@ function UserProjectSection({uid}) {
         <div className="row">
           {/* <UserProjectCard /> */}
           {projects.length == 0 ? (
-            <div className="mb-4 flex center">No Projects to show</div>
+            <div className="mb-4">No Projects to show</div>
           ) : (
             ""
           )}
-          {projectState
-            ? projects.map((result, index) => {
-                return (
-                  <UserProjectCard
-                    key={index}
-                    projects={result}
-                    state={false}
-                    deleteState={deleteState}
-                    setDeleteState={setDeleteState}
-                  />
-                );
-              })
-            : ""}
+          {projectState ? (
+            projects.map((result, index) => {
+              return (
+                <UserProjectCard
+                  key={index}
+                  projects={result}
+                  state={false}
+                  deleteState={deleteState}
+                  setDeleteState={setDeleteState}
+                />
+              );
+            })
+          ) : (
+            <div>
+              <ThreeDots
+                height="30"
+                width="30"
+                radius="9"
+                color="gray"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClassName=""
+                visible={true}
+              />
+            </div>
+          )}
         </div>
       </div>
     </>

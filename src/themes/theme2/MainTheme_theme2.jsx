@@ -9,6 +9,7 @@ import UserDescriptionCard from "./components/UserDescriptionCard";
 import UserGithubChartSection from "./components/UserGithubChartSection";
 import UserProjectSection from "./components/UserProjectSection";
 import UserLinkSection from "./components/UseLinkSection";
+import { ThreeDots } from "react-loader-spinner";
 
 function MainTheme_theme1() {
   const [userState, setUserState] = useState(false);
@@ -43,7 +44,22 @@ function MainTheme_theme1() {
             cf={user.codeforces}
             li={user.linkedin}
           />
-          <UserGithubChartSection />
+          {userState ? (
+            <UserGithubChartSection github_user_name={user.github_user_name} />
+          ) : (
+            <div>
+              <ThreeDots
+                height="30"
+                width="30"
+                radius="9"
+                color="gray"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClassName=""
+                visible={true}
+              />
+            </div>
+          )}
           <UserProjectSection uid={user._id} />
           
           

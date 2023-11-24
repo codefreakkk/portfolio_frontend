@@ -7,6 +7,7 @@ import UserPageHeader from "../../Components/userProfilePage/UserPageHeader";
 import back from "../../assets/icons/back.png";
 import { useNavigate, useParams } from "react-router-dom";
 import { getUser } from "../../api/UserApi";
+import { ThreeDots } from "react-loader-spinner";
 
 function UserPage() {
   const { id } = useParams();
@@ -27,7 +28,7 @@ function UserPage() {
         // navigate to home later while fixing bug
         alert("Some error occured while fetching user data");
         localStorage.clear();
-        navigate("/")
+        navigate("/");
       }
     })();
   }, []);
@@ -36,16 +37,61 @@ function UserPage() {
     <>
       <UserPageHeader back={back} title={"User Profile"} />
       <div className="user-dashboard-container">
-        {userState ? <UserDescriptionCard user={user} /> : "loading"}
-        {/* <UserShowcaseSection /> */}
-        <UserGithubChartSection />
+        {userState ? (
+          <UserDescriptionCard user={user} />
+        ) : (
+          <div>
+            <ThreeDots
+              height="30"
+              width="30"
+              radius="9"
+              color="gray"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true}
+            />
+          </div>
+        )}
+       
+        {userState ? (
+          <UserGithubChartSection github_user_name={user.github_user_name} />
+        ) : (
+          <div>
+            <ThreeDots
+              height="30"
+              width="30"
+              radius="9"
+              color="gray"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true}
+            />
+          </div>
+        )}
         <UserProjectSection uid={id} />
-        {userState ? <UserLinkSection 
-           lc={user.leetcode}
-           gfg={user.gfg}
-           cf={user.codeforces}
-           li={user.linkedin}
-        /> : "Loading"}
+        {userState ? (
+          <UserLinkSection
+            lc={user.leetcode}
+            gfg={user.gfg}
+            cf={user.codeforces}
+            li={user.linkedin}
+          />
+        ) : (
+          <div>
+            <ThreeDots
+              height="30"
+              width="30"
+              radius="9"
+              color="gray"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true}
+            />
+          </div>
+        )}
       </div>
     </>
   );
