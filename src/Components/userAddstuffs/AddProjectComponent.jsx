@@ -7,6 +7,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ThreeDots } from "react-loader-spinner";
 
+// validations
+import { urlValidation } from "../../validations/AddProjectValidation";
+
 function AddProjectComponent() {
   const notify = (msg) => toast(msg);
 
@@ -108,7 +111,7 @@ function AddProjectComponent() {
                       type="text"
                       class="form-control input-border"
                       id="formrow-firstname-input"
-                      placeholder="Enter Your User Name"
+                      placeholder="Enter Project Name"
                       value={project_name}
                       onChange={(e) => setProjectName(e.target.value)}
                     />
@@ -121,7 +124,7 @@ function AddProjectComponent() {
                       type="text"
                       class="form-control input-border"
                       id="formrow-firstname-input"
-                      placeholder="Enter Your User Name"
+                      placeholder="Enter tagline"
                       value={tagline}
                       onChange={(e) => setTagline(e.target.value)}
                     />
@@ -137,7 +140,7 @@ function AddProjectComponent() {
                           type="text"
                           class="form-control input-border"
                           id="formrow-email-input"
-                          placeholder="Enter Tagline"
+                          placeholder="Enter Project Domain"
                           value={project_domain}
                           onChange={(e) => setProjectDomain(e.target.value)}
                         />
@@ -170,6 +173,7 @@ function AddProjectComponent() {
                           id="formrow-email-input"
                           placeholder="Enter Your Full Name"
                           value={github_repo}
+                          onBlur={() => urlValidation(github_repo, setGithubRepo)}
                           onChange={(e) => setGithubRepo(e.target.value)}
                         />
                       </div>
@@ -184,8 +188,9 @@ function AddProjectComponent() {
                           class="form-control input-border"
                           id="formrow-password-input"
                           value={project_url}
+                          onBlur={() => urlValidation(project_url, setProjectUrl)}
                           onChange={(e) => setProjectUrl(e.target.value)}
-                          placeholder="Enter Your Email"
+                          placeholder="Enter live project URL"
                         />
                       </div>
                     </div>
@@ -200,6 +205,12 @@ function AddProjectComponent() {
                         rows="3"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
+                        onBlur={() => {
+                          if (description.length > 500) {
+                            notify("Description can contain 500 characters only");
+                            return;
+                          }
+                        }}
                       ></textarea>
                     </div>
                   </div>

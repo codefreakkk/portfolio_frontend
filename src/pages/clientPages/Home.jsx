@@ -58,7 +58,7 @@ function Home() {
             </NavLink>
             <div className="or">or</div>
             <NavLink to="/login" style={{ textDecoration: "none" }}>
-              <div className="sign_email">login w/ email</div>
+              <div className="sign_email">login w/ username</div>
             </NavLink>
           </>
         )}

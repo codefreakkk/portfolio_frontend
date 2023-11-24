@@ -8,6 +8,9 @@ import { ThreeDots } from "react-loader-spinner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// validations
+import { urlValidation } from "../../validations/AddProjectValidation";
+
 // need to worl on this section
 function ProfileForm() {
   const navigate = useNavigate();
@@ -77,7 +80,6 @@ function ProfileForm() {
       !codeforces ||
       !gfg ||
       !linkedin ||
-      skillsArray.length == 0 ||
       !u_resume
     ) {
       return true;
@@ -101,6 +103,7 @@ function ProfileForm() {
     // post data
     if (checkEmptyFields()) {
       notify("Please fill all fields");
+      setButtonState(false);
       return;
     }
     const result = await addPersonalDetails({
@@ -155,6 +158,12 @@ function ProfileForm() {
       setFileState(false);
       notify("Profile Image not updated");
     }
+  }
+
+  function deleteSkill(index) {
+    let temp = skillsArray.filter((result, i) => index != i);
+    console.log(temp);
+    setSkillsArray(temp);
   }
 
   return (
@@ -251,6 +260,12 @@ function ProfileForm() {
                 rows="3"
                 value={u_description}
                 onChange={(e) => setDescription(e.target.value)}
+                onBlur={() => {
+                  if (u_description.length > 500) {
+                    notify("Description can contain 500 characters only");
+                    return;
+                  }
+                }}
               ></textarea>
             </div>
           </div>
@@ -268,7 +283,7 @@ function ProfileForm() {
                   onChange={(e) => setSkills(e.target.value)}
                   class="form-control input-border"
                   id="formrow-email-input"
-                  placeholder="Enter Your Full Name"
+                  placeholder="Enter your skills"
                 />
               </div>
               <div>
@@ -285,7 +300,11 @@ function ProfileForm() {
             <div className="pt-3 flex flex-wrap">
               {skillsArray.map((result, index) => {
                 return (
-                  <div className="mr-5 skills-container border" key={index}>
+                  <div
+                    className="mr-5 skills-container border pointer"
+                    key={index}
+                    onClick={() => deleteSkill(index)}
+                  >
                     {result}
                   </div>
                 );
@@ -357,9 +376,10 @@ function ProfileForm() {
                   type="text"
                   value={leetcode}
                   onChange={(e) => setLeetcode(e.target.value)}
+                  onBlur={() => urlValidation(leetcode, setLeetcode)}
                   class="form-control input-border"
                   id="formrow-email-input"
-                  placeholder="Enter Your Full Name"
+                  placeholder="Leetcode link"
                 />
               </div>
             </div>
@@ -374,7 +394,8 @@ function ProfileForm() {
                   onChange={(e) => setCodeforces(e.target.value)}
                   class="form-control input-border"
                   id="formrow-password-input"
-                  placeholder="Enter Your Email"
+                  placeholder="Codeforces link"
+                  onBlur={() => urlValidation(codeforces, setCodeforces)}
                 />
               </div>
             </div>
@@ -392,7 +413,8 @@ function ProfileForm() {
                   onChange={(e) => setGFG(e.target.value)}
                   class="form-control input-border"
                   id="formrow-email-input"
-                  placeholder="Enter Your Full Name"
+                  placeholder="GFG link"
+                  onBlur={() => urlValidation(gfg, setGFG)}
                 />
               </div>
             </div>
@@ -408,7 +430,8 @@ function ProfileForm() {
                   onChange={(e) => setLinkedin(e.target.value)}
                   class="form-control input-border"
                   id="formrow-password-input"
-                  placeholder="Enter Your Email"
+                  placeholder="Linkedin link"
+                  onBlur={() => urlValidation(linkedin, setLinkedin)}
                 />
               </div>
             </div>
@@ -428,6 +451,7 @@ function ProfileForm() {
                   class="form-control input-border"
                   id="formrow-email-input"
                   placeholder="Enter Resume Link"
+                  onBlur={() => urlValidation(u_resume, setResume)}
                 />
               </div>
             </div>
@@ -442,7 +466,7 @@ function ProfileForm() {
                     type="file"
                     class="form-control input-border"
                     id="formrow-email-input"
-                    placeholder="Enter Your Full Name"
+                    placeholder=""
                     onChange={toggleChange}
                   />
                 </div>

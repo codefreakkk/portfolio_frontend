@@ -10,6 +10,7 @@ function PortfolioPage() {
 
   const [userTheme, setUserTheme] = useState(1);
   const [userState, setUserState] = useState(false);
+  const [userMessage, setUserMessage] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -21,12 +22,22 @@ function PortfolioPage() {
         console.log(data.data.u_theme);
         // alert(data.data)
       } else {
-        alert("User not found");
+        // alert("User not found");
+        setUserMessage(true);
         navigate("/");
       }
     })();
   }, []);
-
+  if (userMessage) {
+    return (
+      <div className="flex center mt-5">
+       <div>
+       <div> <h2>User not found</h2></div>
+       </div>
+       
+      </div>
+    );
+  }
   if (userState == true && userTheme == 1) {
     return <MainTheme_theme1 />;
   } else if (userState == true && userTheme == 2) {
