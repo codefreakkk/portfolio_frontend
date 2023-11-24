@@ -46,6 +46,7 @@ export const addPersonalDetails = async ({
   gfg,
   linkedin,
   skillsArray,
+  u_resume,
 }) => {
   const token = localStorage.getItem("token");
   const uid = localStorage.getItem("uid");
@@ -65,6 +66,7 @@ export const addPersonalDetails = async ({
         gfg,
         linkedin,
         skillsArray,
+        u_resume,
       },
       { headers: { Authorization: token } }
     )
@@ -152,12 +154,23 @@ export const getFollowing = async (uid) => {
 
 // get user by name API
 export const getUserName = async (uname) => {
-
   return await axios
-    .get(`${baseURL}/getuserbyname/${uname}`, {
-    })
+    .get(`${baseURL}/getuserbyname/${uname}`, {})
     .then((res) => {
       return res;
     })
+    .catch((err) => err);
+};
+
+// update profile picture
+export const updateProfileImage = async (payload) => {
+  const token = localStorage.getItem("token");
+  return axios({
+    method: "put",
+    url: `${baseURL}/updateprofileimage`,
+    headers: { "Content-Type": "multipart/form-data", Authorization: token },
+    data: payload,
+  })
+    .then((res) => res)
     .catch((err) => err);
 };

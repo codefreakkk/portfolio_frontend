@@ -96,12 +96,12 @@ function UserSearchSection() {
                 return (
                   <UserSearchCard
                     key={index}
-                    user={user}
                     uid={result._id}
                     name={result.u_name}
                     description={result.u_description}
                     followState={followState}
                     setFollowState={setFollowState}
+                    image={result.u_image}
                   />
                 );
               })

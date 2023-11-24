@@ -51,7 +51,7 @@ function UserDescriptionCard({ user }) {
             </div>
           </div>
           <div class="col-lg-3 col-sm-4 align-self-center">
-            <img src={profile} alt="" className="profile-container" />
+            <img src={user.u_image} alt="" className="profile-container" />
           </div>
         </div>
       </div>

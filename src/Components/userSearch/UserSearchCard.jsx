@@ -4,12 +4,12 @@ import { followUser } from "../../api/UserApi";
 import { ThreeDots } from "react-loader-spinner";
 
 function UserSearchCard({
-  user,
   uid,
   name,
   description,
   followState,
   setFollowState,
+  image
 }) {
   const [followLoadingState, setFollowLoadingState] = useState(false);
 
@@ -62,7 +62,7 @@ function UserSearchCard({
               <div class="avatar-xs me-3 mb-3">
                 <div class="avatar-title bg-transparent rounded">
                   {/* user image */}
-                  <img src={user} alt="" height="35" className="user-image" />
+                  <img src={image} alt="Image here" height="35" className="user-image" />
                 </div>
               </div>
               <div class="d-flex">

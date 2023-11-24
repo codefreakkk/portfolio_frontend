@@ -43,11 +43,11 @@ function Header() {
 
           <div class="d-flex">
             <div class="dropdown d-inline-block">
-              <img
+              {/* <img
                 class="rounded-circle header-profile-user mr-5"
                 src={avtar}
                 alt="Header Avatar"
-              />
+              /> */}
               <span
                 class="d-none pointer d-xl-inline-block ms-1 color-white font-weight-500"
                 key="t-henry"

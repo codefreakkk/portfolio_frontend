@@ -13,7 +13,7 @@ function UserCard({user, result}) {
               <div class="avatar-xs me-3 mb-3">
                 <div class="avatar-title bg-transparent rounded">
                   {/* user image */}
-                  <img src={user} alt="" height="35" className="user-image" />
+                  <img src={result.u_image} alt="" height="35" className="user-image" />
                 </div>
               </div>
               <div class="d-flex">

@@ -12,7 +12,7 @@ export const addProject = async (payload) => {
     .catch((err) => err);
 };
 
-// get all projects of user
+// get all projects of user (Protected API)
 export const getProject = async (uid) => {
   const token = localStorage.getItem("token");
 

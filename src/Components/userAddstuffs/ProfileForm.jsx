@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { addPersonalDetails, getUser } from "../../api/UserApi";
+import { useNavigate } from "react-router-dom";
+import { updateProfileImage } from "../../api/UserApi";
+import { ThreeDots } from "react-loader-spinner";
 
 // need to worl on this section
 function ProfileForm() {
+  const navigate = useNavigate();
   const [full_name, setFullName] = useState("");
   const [u_email, setEmail] = useState("");
   const [u_contact, setContact] = useState("");
@@ -17,11 +21,15 @@ function ProfileForm() {
   const [linkedin, setLinkedin] = useState("");
   const [skillsArray, setSkillsArray] = useState([]);
   const [skills, setSkills] = useState("");
+  const [u_resume, setResume] = useState("");
+  const [file, setFile] = useState(null);
+  const [fileState, setFileState] = useState(false);
+
+  // get user id
+  const uid = localStorage.getItem("uid");
 
   // get all the data
   useEffect(() => {
-    const uid = localStorage.getItem("uid");
-    
     (async () => {
       const result = await getUser(uid);
       const data = result.data;
@@ -40,8 +48,11 @@ function ProfileForm() {
         setGFG(user.gfg);
         setLinkedin(user.linkedin);
         setSkillsArray(user.skills);
+        setResume(user.u_resume);
       } else {
-        console.log("Data not fetched");
+        alert("Some error occured while fetching data");
+        localStorage.clear();
+        navigate("/");
       }
     })();
   }, []);
@@ -61,7 +72,8 @@ function ProfileForm() {
       !codeforces ||
       !gfg ||
       !linkedin ||
-      skillsArray.length == 0
+      skillsArray.length == 0 ||
+      !u_resume
     ) {
       return true;
     } else {
@@ -98,13 +110,41 @@ function ProfileForm() {
       gfg,
       linkedin,
       skillsArray,
+      u_resume,
     });
-    
+
     const data = result.data;
     if (data != null && data.success) {
       alert(data.message);
     } else {
       alert("Some error occured");
+    }
+  }
+
+  function toggleChange(e) {
+    e.preventDefault();
+    setFile(e.target.files[0]);
+  }
+
+  async function submitProfilePicture() {
+    setFileState(true);
+    if (file === null) {
+      alert("Please select file first");
+      setFileState(false);
+      return;
+    }
+
+    // API call
+    const result = await updateProfileImage({ image: file, uid: uid });
+    const data = result.data;
+    if (data != null && data.success) {
+      console.log(data);
+      setFileState(false);
+      alert(data.message);
+    } else {
+      console.log(result);
+      setFileState(false);
+      alert("Profile Image not updated");
     }
   }
 
@@ -351,32 +391,60 @@ function ProfileForm() {
             </div>
             {/* </div> */}
 
-            {/* resume */}
-
             {/* <div class="row"> */}
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label for="formrow-email-input" class="form-label">
-                  Update Profile Picture
+
+            <div class="flex">
+              <div class="mr-10 mb-3" style={{ width: "100%" }}>
+                <label for="formrow-password-input" class="form-label">
+                  Resume Link
                 </label>
                 <input
-                  type="file"
+                  type="text"
+                  value={u_resume}
+                  onChange={(e) => setResume(e.target.value)}
                   class="form-control input-border"
-                  id="resume"
+                  id="formrow-email-input"
+                  placeholder="Enter Resume Link"
                 />
               </div>
             </div>
 
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label for="formrow-password-input" class="form-label">
-                  Upload Resume
-                </label>
-                <input
-                  type="file"
-                  class="form-control input-border"
-                  id="resume"
-                />
+            <div className="mb-3">
+              <label for="formrow-email-input" class="form-label">
+                Skill Set
+              </label>
+              <div class="flex">
+                <div class="mr-10" style={{ width: "100%" }}>
+                  <input
+                    type="file"
+                    class="form-control input-border"
+                    id="formrow-email-input"
+                    placeholder="Enter Your Full Name"
+                    onChange={toggleChange}
+                  />
+                </div>
+                <div>
+                  {fileState ? (
+                    <ThreeDots
+                      height="25"
+                      width="25"
+                      radius="9"
+                      color="gray"
+                      ariaLabel="three-dots-loading"
+                      wrapperStyle={{}}
+                      wrapperClassName=""
+                      visible={true}
+                    />
+                  ) : (
+                    <button
+                      type="button"
+                      class="btn btn-primary waves-effect waves-light"
+                      onClick={submitProfilePicture}
+                    >
+                      Submit
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           </div>

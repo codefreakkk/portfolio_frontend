@@ -37,7 +37,6 @@ function FollowingComponent() {
                     key={index}
                     user={user}
                     result={result.uid}
-
                   />)
               })}
             </div>

@@ -33,17 +33,21 @@ function MainTheme_theme1() {
 
   return (
     <>
-      {userState ? <div className="user-dashboard-container container mt-5">
-        <UserDescriptionCard user={user} />
-        <UserGithubChartSection />
-        <UserProjectSection uid={user._id} />
-        <UserLinkSection
-          lc={user.leetcode}
-          gfg={user.gfg}
-          cf={user.codeforces}
-          li={user.linkedin}
-        />
-      </div> : <div className="loading_container theme-flex mt-5">Loading</div>}
+      {userState ? (
+        <div className="user-dashboard-container container mt-5">
+          <UserDescriptionCard user={user} />
+          <UserGithubChartSection />
+          <UserProjectSection uid={user._id} />
+          <UserLinkSection
+            lc={user.leetcode}
+            gfg={user.gfg}
+            cf={user.codeforces}
+            li={user.linkedin}
+          />
+        </div>
+      ) : (
+        <div className="loading_container theme-flex mt-5">Loading</div>
+      )}
     </>
   );
 }
